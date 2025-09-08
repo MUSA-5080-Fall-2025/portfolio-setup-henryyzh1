@@ -2,7 +2,7 @@
 title: "MUSA 5080 Portfolio"
 ---
 
-# Welcome to My Portfolio
+# Welcome to Henry's Portfolio
 
 This portfolio documents my learning journey in Public Policy Analytics (MUSA 5080).
 
@@ -15,7 +15,7 @@ Advanced spatial analysis and data science for urban planning and public policy.
 - **Final Project:** Capstone modeling challenge
 
 ## About Me
-[Students will customize this section]
+Hi all!! I'm Zihang Yang from Shenzhen, China --- go by Henry. Currently I'm on my Master's studies of Smart Cities --- City Planning in UPenn, graduating in 2026. After my five years of undergraduate studies in Urban Planning and Design, I'm equipped with 2D/3D design and data analysis skills. Always welcome to talk furtuer about spatial data analysis and urban planning stuffs!
 
 ## Contact
 - **Email:** henryyzh@upenn.edu

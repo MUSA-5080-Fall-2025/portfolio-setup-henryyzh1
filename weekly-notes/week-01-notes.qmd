@@ -4,20 +4,23 @@ date: "2025-09-08"
 ---
 
 ## Key Concepts Learned
-- [List main concepts from lecture]
-- [Technical skills covered]
+- Concept about Git, GitHub, repo, commit, push, pull
+- Quarto documentation structure
+- Basic R language grammar and dplyr functions
 
 ## Coding Techniques
-- [New R functions or approaches]
-- [Quarto features learned]
+- YAML header
+- R Text formatting
+- R Headers & Lists & Links
+- dplyr select(), filter(), mutate(), summarize(), group_by()
 
 ## Questions & Challenges
-- [What I didn't fully understand]
-- [Areas needing more practice]
+- Understood most of the things
+- Need to work more on push and pulls
 
 ## Connections to Policy
-- [How this week's content applies to real policy work]
+- Not quite! Just an intro to GitHub.
 
 ## Reflection
-- [What was most interesting]
-- [How I'll apply this knowledge]
+- Learn about Mets and Eagles
+- There are a lot to digest for a coding beginner! You are on the right track!
