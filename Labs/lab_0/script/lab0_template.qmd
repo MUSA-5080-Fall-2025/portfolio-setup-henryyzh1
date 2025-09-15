@@ -81,7 +81,7 @@ car_df
 
 **Question:** What differences do you notice in how they print?
 
-**Your answer:** [No big difference?]
+**Your answer:** [Tibbles only print 10 rows, while dataframes print them all]
 
 # Exercise 2: Basic Column Operations
 
