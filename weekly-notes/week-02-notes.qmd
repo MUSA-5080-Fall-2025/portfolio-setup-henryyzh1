@@ -1,0 +1,25 @@
+---
+title: "Week 2 Notes - Algorithmic Decision Making & Census Data"
+date: "2025-09-15"
+---
+
+## Key Concepts Learned
+- Running Lab 0
+- Algorithm in Governance
+- Group Challenge in Housing Assistance Allocation
+- Proxy, Blind spot, Harm/Guardrail
+- Census Data
+
+## Coding Techniques
+- Reviewing dplyr
+- Get know with tidycensus
+
+## Questions & Challenges
+- Still need more practice on the R functions
+
+## Connections to Policy
+- Smart governance definition
+- Using census data to support decision making
+
+## Reflection
+- Data analytic is subjective! Be careful not to exclude any group of people in the community.
