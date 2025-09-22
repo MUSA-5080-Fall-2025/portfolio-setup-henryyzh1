@@ -1,0 +1,33 @@
+---
+title: "Week 3 Notes - Data Visualization & Exploratory Analysis"
+date: "2025-09-22"
+---
+
+## Key Concepts Learned
+- Anscombe’s Quartet
+- Visualization in policy context
+- EDA workflow and principles
+- Group Challenge in Housing Assistance Allocation
+- Aesthetic mappings
+- 5 Essential Guidelines for Using ACS Data
+
+## Coding Techniques
+- get_acs
+- filter(str_detect())
+- ggplot basic
+- ggplot for aesthetics
+- data joining (left_join, right_join, full_join, inner_join)
+
+## Questions & Challenges
+- Need to figure out how to use MOE for analysis and visualization
+- Practice and try to remember the plots and their uses
+
+## Connections to Policy
+- Some poor policy decisions are based on misunderstood data
+- A county with “average” income might have extreme inequality that algorithms would miss without visualization
+
+## Reflection
+- Only 27% of planners warn users about unreliable ACS data. Don't violates AICP Code of Ethics!
+- Create honest, transparent visualizations
+- Always assess and communicate data quality
+- Consider who might be harmed by uncertain data

@@ -126,6 +126,41 @@
     "text": "Reflection\n\nData analytic is subjective! Be careful not to exclude any group of people in the community."
   },
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "MUSA 5080 Portfolio",
+    "section": "",
+    "text": "This portfolio documents my learning journey in Public Policy Analytics (MUSA 5080).\n\n\nAdvanced spatial analysis and data science for urban planning and public policy.\n\n\n\n\nWeekly Notes: My learning reflections and key concepts\nLabs: Completed assignments and analyses\nFinal Project: Capstone modeling challenge\n\n\n\n\nHi all!! I’m Zihang Yang from Shenzhen, China — go by Henry. Currently I’m on my Master’s studies of Smart Cities — City Planning in UPenn, graduating in 2026. After my five years of undergraduate studies in Urban Planning and Design, I’m equipped with 2D/3D design and data analysis skills. Always welcome to talk furtuer about spatial data analysis and urban planning stuffs!\n\n\n\n\nEmail: henryyzh@upenn.edu\nGitHub: @henryyzh1"
+  },
+  {
+    "objectID": "index.html#about-this-course",
+    "href": "index.html#about-this-course",
+    "title": "MUSA 5080 Portfolio",
+    "section": "",
+    "text": "Advanced spatial analysis and data science for urban planning and public policy."
+  },
+  {
+    "objectID": "index.html#portfolio-structure",
+    "href": "index.html#portfolio-structure",
+    "title": "MUSA 5080 Portfolio",
+    "section": "",
+    "text": "Weekly Notes: My learning reflections and key concepts\nLabs: Completed assignments and analyses\nFinal Project: Capstone modeling challenge"
+  },
+  {
+    "objectID": "index.html#about-me",
+    "href": "index.html#about-me",
+    "title": "MUSA 5080 Portfolio",
+    "section": "",
+    "text": "Hi all!! I’m Zihang Yang from Shenzhen, China — go by Henry. Currently I’m on my Master’s studies of Smart Cities — City Planning in UPenn, graduating in 2026. After my five years of undergraduate studies in Urban Planning and Design, I’m equipped with 2D/3D design and data analysis skills. Always welcome to talk furtuer about spatial data analysis and urban planning stuffs!"
+  },
+  {
+    "objectID": "index.html#contact",
+    "href": "index.html#contact",
+    "title": "MUSA 5080 Portfolio",
+    "section": "",
+    "text": "Email: henryyzh@upenn.edu\nGitHub: @henryyzh1"
+  },
+  {
     "objectID": "Labs/lab_0/script/lab0_template.html",
     "href": "Labs/lab_0/script/lab0_template.html",
     "title": "Lab 0: Getting Started with dplyr",
@@ -203,39 +238,46 @@
     "text": "5.2 Categorical Summaries\n\n# Frequency table for price categories\ncount(car_data, Price_category, sort = TRUE)\n\n# A tibble: 3 × 2\n  Price_category     n\n  &lt;chr&gt;          &lt;int&gt;\n1 budget         34040\n2 midrange        9782\n3 mid-range       6178"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "MUSA 5080 Portfolio",
+    "objectID": "weekly-notes/week-03-notes.html",
+    "href": "weekly-notes/week-03-notes.html",
+    "title": "Week 3 Notes - Data Visualization & Exploratory Analysis",
     "section": "",
-    "text": "This portfolio documents my learning journey in Public Policy Analytics (MUSA 5080).\n\n\nAdvanced spatial analysis and data science for urban planning and public policy.\n\n\n\n\nWeekly Notes: My learning reflections and key concepts\nLabs: Completed assignments and analyses\nFinal Project: Capstone modeling challenge\n\n\n\n\nHi all!! I’m Zihang Yang from Shenzhen, China — go by Henry. Currently I’m on my Master’s studies of Smart Cities — City Planning in UPenn, graduating in 2026. After my five years of undergraduate studies in Urban Planning and Design, I’m equipped with 2D/3D design and data analysis skills. Always welcome to talk furtuer about spatial data analysis and urban planning stuffs!\n\n\n\n\nEmail: henryyzh@upenn.edu\nGitHub: @henryyzh1"
+    "text": "Anscombe’s Quartet\nVisualization in policy context\nEDA workflow and principles\nGroup Challenge in Housing Assistance Allocation\nAesthetic mappings\n5 Essential Guidelines for Using ACS Data"
   },
   {
-    "objectID": "index.html#about-this-course",
-    "href": "index.html#about-this-course",
-    "title": "MUSA 5080 Portfolio",
+    "objectID": "weekly-notes/week-03-notes.html#key-concepts-learned",
+    "href": "weekly-notes/week-03-notes.html#key-concepts-learned",
+    "title": "Week 3 Notes - Data Visualization & Exploratory Analysis",
     "section": "",
-    "text": "Advanced spatial analysis and data science for urban planning and public policy."
+    "text": "Anscombe’s Quartet\nVisualization in policy context\nEDA workflow and principles\nGroup Challenge in Housing Assistance Allocation\nAesthetic mappings\n5 Essential Guidelines for Using ACS Data"
   },
   {
-    "objectID": "index.html#portfolio-structure",
-    "href": "index.html#portfolio-structure",
-    "title": "MUSA 5080 Portfolio",
-    "section": "",
-    "text": "Weekly Notes: My learning reflections and key concepts\nLabs: Completed assignments and analyses\nFinal Project: Capstone modeling challenge"
+    "objectID": "weekly-notes/week-03-notes.html#coding-techniques",
+    "href": "weekly-notes/week-03-notes.html#coding-techniques",
+    "title": "Week 3 Notes - Data Visualization & Exploratory Analysis",
+    "section": "Coding Techniques",
+    "text": "Coding Techniques\n\nget_acs\nfilter(str_detect())\nggplot basic\nggplot for aesthetics\ndata joining (left_join, right_join, full_join, inner_join)"
   },
   {
-    "objectID": "index.html#about-me",
-    "href": "index.html#about-me",
-    "title": "MUSA 5080 Portfolio",
-    "section": "",
-    "text": "Hi all!! I’m Zihang Yang from Shenzhen, China — go by Henry. Currently I’m on my Master’s studies of Smart Cities — City Planning in UPenn, graduating in 2026. After my five years of undergraduate studies in Urban Planning and Design, I’m equipped with 2D/3D design and data analysis skills. Always welcome to talk furtuer about spatial data analysis and urban planning stuffs!"
+    "objectID": "weekly-notes/week-03-notes.html#questions-challenges",
+    "href": "weekly-notes/week-03-notes.html#questions-challenges",
+    "title": "Week 3 Notes - Data Visualization & Exploratory Analysis",
+    "section": "Questions & Challenges",
+    "text": "Questions & Challenges\n\nNeed to figure out how to use MOE for analysis and visualization\nPractice and try to remember the plots and their uses"
   },
   {
-    "objectID": "index.html#contact",
-    "href": "index.html#contact",
-    "title": "MUSA 5080 Portfolio",
-    "section": "",
-    "text": "Email: henryyzh@upenn.edu\nGitHub: @henryyzh1"
+    "objectID": "weekly-notes/week-03-notes.html#connections-to-policy",
+    "href": "weekly-notes/week-03-notes.html#connections-to-policy",
+    "title": "Week 3 Notes - Data Visualization & Exploratory Analysis",
+    "section": "Connections to Policy",
+    "text": "Connections to Policy\n\nSome poor policy decisions are based on misunderstood data\nA county with “average” income might have extreme inequality that algorithms would miss without visualization"
+  },
+  {
+    "objectID": "weekly-notes/week-03-notes.html#reflection",
+    "href": "weekly-notes/week-03-notes.html#reflection",
+    "title": "Week 3 Notes - Data Visualization & Exploratory Analysis",
+    "section": "Reflection",
+    "text": "Reflection\n\nOnly 27% of planners warn users about unreliable ACS data. Don’t violates AICP Code of Ethics!\nCreate honest, transparent visualizations\nAlways assess and communicate data quality\nConsider who might be harmed by uncertain data"
   },
   {
     "objectID": "weekly-notes/week-01-notes.html",
