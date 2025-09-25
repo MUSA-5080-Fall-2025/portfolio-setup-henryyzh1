@@ -549,9 +549,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="tract-level-demographics">3.2 Tract-Level Demographics</h2>
 <p><strong>Your Task:</strong> Get demographic data for census tracts in your selected counties.</p>
 <p><strong>Requirements:</strong> - Geography: tract level - Variables: white alone (B03002_003), Black/African American (B03002_004), Hispanic/Latino (B03002_012), total population (B03002_001) - Use the same state and year as before - Output format: wide</p>
-<ul>
-<li><strong>Challenge:</strong> You’ll need county codes, not names. Look at the GEOID patterns in your county data for hints.</li>
-</ul>
+<p><strong>Challenge:</strong> You’ll need county codes, not names. Look at the GEOID patterns in your county data for hints.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define your race/ethnicity variables with descriptive names</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>races <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
@@ -1090,8 +1088,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Anchorage Municipality</li>
 <li>Kenai Peninsula Borough</li>
-<li>Matanuska-Susitna Borough These 3 counties have highly reliable estimates (margins of error below 5%), making it suitable for immediate algorithmic decision-making.</li>
+<li>Matanuska-Susitna Borough</li>
 </ul>
+<p>These 3 counties have highly reliable estimates (margins of error below 5%), making it suitable for immediate algorithmic decision-making.</p>
 <ol start="2" type="1">
 <li><strong>Counties requiring additional oversight:</strong></li>
 </ol>
@@ -1106,8 +1105,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Nome Census Area</li>
 <li>Northwest Arctic Borough</li>
 <li>Prince of Wales-Hyder Census Area</li>
-<li>Sitka City and Borough These 11 counties may have algorithms being used here, but outputs should be closely monitored through periodic audits, error tracking, and targeted human review in high-stakes contexts.</li>
+<li>Sitka City and Borough</li>
 </ul>
+<p>These 11 counties may have algorithms being used here, but outputs should be closely monitored through periodic audits, error tracking, and targeted human review in high-stakes contexts.</p>
 <ol start="3" type="1">
 <li><strong>Counties needing alternative approaches:</strong></li>
 </ol>
@@ -1127,8 +1127,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Southeast Fairbanks Census Area</li>
 <li>Wrangell City and Borough</li>
 <li>Yakutat City and Borough</li>
-<li>Yukon-Koyukuk Census Area These 16 counties (over half of Alaska’s total) show margins of error exceeding 10%, with some reaching above 30%. Automated decision-making here risks significant misallocation. The Department should consider manual review, multi-year or regional aggregation, or integration of supplemental state/tribal data before using these estimates.</li>
+<li>Yukon-Koyukuk Census Area</li>
 </ul>
+<p>These 16 counties (over half of Alaska’s total) show margins of error exceeding 10%, with some reaching above 30%. Automated decision-making here risks significant misallocation. The Department should consider manual review, multi-year or regional aggregation, or integration of supplemental state/tribal data before using these estimates.</p>
 </section>
 <section id="questions-for-further-investigation" class="level2">
 <h2 class="anchored" data-anchor-id="questions-for-further-investigation">5.3 Questions for Further Investigation</h2>
@@ -1142,26 +1143,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Technical Notes</h1>
 <p><strong>Data Sources:</strong></p>
 <ul>
-<li><p>U.S. Census Bureau, American Community Survey 2018-2022 5-Year Estimates</p></li>
-<li><p>Retrieved via tidycensus R package on 09-24-2025</p></li>
+<li>U.S. Census Bureau, American Community Survey 2018-2022 5-Year Estimates.</li>
+<li>Retrieved via tidycensus R package on 09-24-2025.</li>
 </ul>
 <p><strong>Reproducibility:</strong></p>
 <ul>
-<li><p>All analysis conducted in R version 2025.05.1+513</p></li>
-<li><p>Census API key required for replication</p></li>
-<li><p>Complete code and documentation available at: https://musa-5080-fall-2025.github.io/portfolio-setup-henryyzh1/</p></li>
+<li>All analysis conducted in R version 2025.05.1+513.</li>
+<li>Census API key required for replication.</li>
+<li>Complete code and documentation available at: https://musa-5080-fall-2025.github.io/portfolio-setup-henryyzh1/.</li>
 </ul>
 <p><strong>Methodology Notes:</strong></p>
 <ul>
-<li><p>Analysis is based on the 2022 ACS 5-year estimates for B19013_001, B01003_001 in county level, B03002_003, B03002_004, B03002_012, B03002_001 in census tract level</p></li>
-<li><p>Analysis is based on R packages like tidycensus, tidyverse, knitr</p></li>
-<li><p>Reliability categories were defined by MOE percentage: High (&lt;5%), Moderate (5–10%), and Low (&gt;10%)</p></li>
-<li><p>County selection is based on reliability category and total population</p></li>
+<li>Analysis is based on the 2022 ACS 5-year estimates for B19013_001, B01003_001 in county level, B03002_003, B03002_004, B03002_012, B03002_001 in census tract level.</li>
+<li>Analysis is based on R packages like tidycensus, tidyverse, knitr.</li>
+<li>Reliability categories were defined by MOE percentage: High (&lt;5%), Moderate (5–10%), and Low (&gt;10%).</li>
+<li>County selection is based on reliability category and total population.</li>
 </ul>
-<p><strong>Limitations:</strong> - Sample size constraints: There are many rural counties in Alaska have small populations, leading to inflated MOEs and unstable estimates</p>
+<p><strong>Limitations:</strong></p>
 <ul>
-<li><p>Temporal scope: Results are based on a single year (2022); year-to-year variability is not captured</p></li>
-<li><p>Applicability: The MOE thresholds provide a general framework, but tolerance for uncertainty may differ depending on policy area</p></li>
+<li>Sample size constraints: There are many rural counties in Alaska have small populations, leading to inflated MOEs and unstable estimates.</li>
+<li>Temporal scope: Results are based on a single year (2022); year-to-year variability is not captured.</li>
+<li>Applicability: The MOE thresholds provide a general framework, but tolerance for uncertainty may differ depending on policy area.</li>
 </ul>
 <section id="submission-checklist" class="level2">
 <h2 class="anchored" data-anchor-id="submission-checklist">Submission Checklist</h2>
