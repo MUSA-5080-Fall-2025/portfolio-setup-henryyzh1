@@ -211,7 +211,7 @@ kable(
 - Use the same state and year as before
 - Output format: wide
 
-- **Challenge:** You'll need county codes, not names. Look at the GEOID patterns in your county data for hints.
+**Challenge:** You'll need county codes, not names. Look at the GEOID patterns in your county data for hints.
 
 ```{r tract-demographics}
 # Define your race/ethnicity variables with descriptive names
@@ -434,6 +434,7 @@ kable(
  - Anchorage Municipality
  - Kenai Peninsula Borough
  - Matanuska-Susitna Borough
+ 
 These 3 counties have highly reliable estimates (margins of error below 5%), making it suitable for immediate algorithmic decision-making.
 
 2. **Counties requiring additional oversight:**
@@ -448,6 +449,7 @@ These 3 counties have highly reliable estimates (margins of error below 5%), mak
  - Northwest Arctic Borough
  - Prince of Wales-Hyder Census Area
  - Sitka City and Borough
+ 
 These 11 counties may have algorithms being used here, but outputs should be closely monitored through periodic audits, error tracking, and targeted human review in high-stakes contexts.
 
 3. **Counties needing alternative approaches:**
@@ -467,6 +469,7 @@ These 11 counties may have algorithms being used here, but outputs should be clo
  - Wrangell City and Borough
  - Yakutat City and Borough
  - Yukon-Koyukuk Census Area
+ 
 These 16 counties (over half of Alaska’s total) show margins of error exceeding 10%, with some reaching above 30%. Automated decision-making here risks significant misallocation. The Department should consider manual review, multi-year or regional aggregation, or integration of supplemental state/tribal data before using these estimates.
 
 ## 5.3 Questions for Further Investigation
@@ -477,34 +480,27 @@ These 16 counties (over half of Alaska’s total) show margins of error exceedin
 
 **Data Sources:** 
 
- - U.S. Census Bureau, American Community Survey 2018-2022 5-Year Estimates
- 
- - Retrieved via tidycensus R package on 09-24-2025
+ - U.S. Census Bureau, American Community Survey 2018-2022 5-Year Estimates.
+ - Retrieved via tidycensus R package on 09-24-2025.
 
 **Reproducibility:** 
 
- - All analysis conducted in R version 2025.05.1+513
- 
- - Census API key required for replication
- 
- - Complete code and documentation available at: https://musa-5080-fall-2025.github.io/portfolio-setup-henryyzh1/
+ - All analysis conducted in R version 2025.05.1+513.
+ - Census API key required for replication.
+ - Complete code and documentation available at: https://musa-5080-fall-2025.github.io/portfolio-setup-henryyzh1/.
 
 **Methodology Notes:**
 
- - Analysis is based on the 2022 ACS 5-year estimates for B19013_001, B01003_001 in county level, B03002_003, B03002_004, B03002_012, B03002_001 in census tract level
- 
- - Analysis is based on R packages like tidycensus, tidyverse, knitr
- 
- - Reliability categories were defined by MOE percentage: High (<5%), Moderate (5–10%), and Low (>10%)
- 
- - County selection is based on reliability category and total population
+ - Analysis is based on the 2022 ACS 5-year estimates for B19013_001, B01003_001 in county level, B03002_003, B03002_004, B03002_012, B03002_001 in census tract level.
+ - Analysis is based on R packages like tidycensus, tidyverse, knitr.
+ - Reliability categories were defined by MOE percentage: High (<5%), Moderate (5–10%), and Low (>10%).
+ - County selection is based on reliability category and total population.
 
 **Limitations:**
- - Sample size constraints: There are many rural counties in Alaska have small populations, leading to inflated MOEs and unstable estimates
- 
- - Temporal scope: Results are based on a single year (2022); year-to-year variability is not captured
- 
- - Applicability: The MOE thresholds provide a general framework, but tolerance for uncertainty may differ depending on policy area
+
+ - Sample size constraints: There are many rural counties in Alaska have small populations, leading to inflated MOEs and unstable estimates.
+ - Temporal scope: Results are based on a single year (2022); year-to-year variability is not captured.
+ - Applicability: The MOE thresholds provide a general framework, but tolerance for uncertainty may differ depending on policy area.
 
 ## Submission Checklist
 
