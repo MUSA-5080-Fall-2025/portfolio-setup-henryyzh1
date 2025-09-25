@@ -169,7 +169,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="dropdown-menu" aria-labelledby="nav-menu-assignments">    
         <li>
     <a class="dropdown-item" href="../../../Labs/lab_1/script/assignment1.html">
- <span class="dropdown-text">Assignment 1</span></a>
+ <span class="dropdown-text">Assignment 1: Census Data Exploration</span></a>
   </li>  
     </ul>
   </li>
@@ -216,8 +216,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#part-5-policy-recommendations" id="toc-part-5-policy-recommendations" class="nav-link" data-scroll-target="#part-5-policy-recommendations">Part 5: Policy Recommendations</a>
   <ul class="collapse">
   <li><a href="#analysis-integration-and-professional-summary" id="toc-analysis-integration-and-professional-summary" class="nav-link" data-scroll-target="#analysis-integration-and-professional-summary">5.1 Analysis Integration and Professional Summary</a></li>
-  <li><a href="#specific-recommendations" id="toc-specific-recommendations" class="nav-link" data-scroll-target="#specific-recommendations">6.3 Specific Recommendations</a></li>
-  <li><a href="#questions-for-further-investigation" id="toc-questions-for-further-investigation" class="nav-link" data-scroll-target="#questions-for-further-investigation">Questions for Further Investigation</a></li>
+  <li><a href="#specific-recommendations" id="toc-specific-recommendations" class="nav-link" data-scroll-target="#specific-recommendations">5.2 Specific Recommendations</a></li>
+  <li><a href="#questions-for-further-investigation" id="toc-questions-for-further-investigation" class="nav-link" data-scroll-target="#questions-for-further-investigation">5.3 Questions for Further Investigation</a></li>
   </ul></li>
   <li><a href="#technical-notes" id="toc-technical-notes" class="nav-link" data-scroll-target="#technical-notes">Technical Notes</a>
   <ul class="collapse">
@@ -548,7 +548,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="tract-level-demographics" class="level2">
 <h2 class="anchored" data-anchor-id="tract-level-demographics">3.2 Tract-Level Demographics</h2>
 <p><strong>Your Task:</strong> Get demographic data for census tracts in your selected counties.</p>
-<p><strong>Requirements:</strong> - Geography: tract level - Variables: white alone (B03002_003), Black/African American (B03002_004), Hispanic/Latino (B03002_012), total population (B03002_001) - Use the same state and year as before - Output format: wide - <strong>Challenge:</strong> You’ll need county codes, not names. Look at the GEOID patterns in your county data for hints.</p>
+<p><strong>Requirements:</strong> - Geography: tract level - Variables: white alone (B03002_003), Black/African American (B03002_004), Hispanic/Latino (B03002_012), total population (B03002_001) - Use the same state and year as before - Output format: wide</p>
+<ul>
+<li><strong>Challenge:</strong> You’ll need county codes, not names. Look at the GEOID patterns in your county data for hints.</li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define your race/ethnicity variables with descriptive names</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>races <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
@@ -802,7 +805,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="analysis-integration-and-professional-summary" class="level2">
 <h2 class="anchored" data-anchor-id="analysis-integration-and-professional-summary">5.1 Analysis Integration and Professional Summary</h2>
 <p><strong>Your Task:</strong> Write an executive summary that integrates findings from all four analyses.</p>
-<p><strong>Executive Summary Requirements:</strong> 1. <strong>Overall Pattern Identification</strong>: What are the systematic patterns across all your analyses? 2. <strong>Equity Assessment</strong>: Which communities face the greatest risk of algorithmic bias based on your findings? 3. <strong>Root Cause Analysis</strong>: What underlying factors drive both data quality issues and bias risk? 4. <strong>Strategic Recommendations</strong>: What should the Department implement to address these systematic issues?</p>
+<p><strong>Executive Summary Requirements:</strong></p>
+<ol type="1">
+<li><p><strong>Overall Pattern Identification</strong>: What are the systematic patterns across all your analyses?</p></li>
+<li><p><strong>Equity Assessment</strong>: Which communities face the greatest risk of algorithmic bias based on your findings?</p></li>
+<li><p><strong>Root Cause Analysis</strong>: What underlying factors drive both data quality issues and bias risk?</p></li>
+<li><p><strong>Strategic Recommendations</strong>: What should the Department implement to address these systematic issues?</p></li>
+</ol>
 <p><strong>Executive Summary:</strong></p>
 <p><strong>Overall Pattern Identification</strong> Across Alaska counties, more than half (53.3%) of median household income estimates fall into the “Low Confidence” category, while only 10% qualify as “High Confidence.” The top 3 counties with the highest MOE percentages, such as Dillingham, Yakutat, and Haines, show margins of error above 20%. This indicates systematic reliability challenges in smaller and remote communities. At the tract level, Anchorage demonstrates greater diversity and larger populations, while North Slope shows both lower White representation (32.6%) and smaller sample sizes, reinforcing the vulnerability of rural areas to unreliable data.</p>
 <p><strong>Equity Assessment</strong> Communities most at risk of algorithmic bias are those in rural and remote counties. For example, Dillingham and Yakutat would be poorly served by algorithms relying on median income, as their estimates carry uncertainty levels of 30–40%. At the tract level, unreliable tracts (74 out of 86) tend to have slightly smaller populations and lower White percentages compared to reliable tracts, suggesting that diverse or minority-heavy communities face greater risks of data-driven misrepresentation.</p>
@@ -810,7 +819,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Strategic Recommendations</strong> The Department should prioritize three measures to strengthen equity and reliability in data-driven policy. First, apply MOE thresholds in all algorithmic workflows to flag unstable estimates before use. Second, conduct equity audits to ensure algorithms do not misallocate resources to rural or minority communities. Third, communicate uncertainty transparently so policymakers understand the limitations of ACS data in Alaska’s rural and remote contexts.</p>
 </section>
 <section id="specific-recommendations" class="level2">
-<h2 class="anchored" data-anchor-id="specific-recommendations">6.3 Specific Recommendations</h2>
+<h2 class="anchored" data-anchor-id="specific-recommendations">5.2 Specific Recommendations</h2>
 <p><strong>Your Task:</strong> Create a decision framework for algorithm implementation.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a summary table using your county reliability data</span></span>
@@ -1122,7 +1131,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 <section id="questions-for-further-investigation" class="level2">
-<h2 class="anchored" data-anchor-id="questions-for-further-investigation">Questions for Further Investigation</h2>
+<h2 class="anchored" data-anchor-id="questions-for-further-investigation">5.3 Questions for Further Investigation</h2>
 <ol type="1">
 <li>Are unreliable estimates spatially concentrated in rural or Arctic regions, and how does geographic isolation contribute to these patterns?</li>
 <li>Do particular demographic groups like Alaska Native consistently face higher MOE values, and what adjustments are needed to ensure equity in algorithmic use?</li>
@@ -1131,10 +1140,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="technical-notes" class="level1">
 <h1>Technical Notes</h1>
-<p><strong>Data Sources:</strong> - U.S. Census Bureau, American Community Survey 2018-2022 5-Year Estimates - Retrieved via tidycensus R package on 09-24-2025</p>
-<p><strong>Reproducibility:</strong> - All analysis conducted in R version 2025.05.1+513 - Census API key required for replication - Complete code and documentation available at: https://musa-5080-fall-2025.github.io/portfolio-setup-henryyzh1/</p>
-<p><strong>Methodology Notes:</strong> - Analysis is based on the 2022 ACS 5-year estimates for B19013_001, B01003_001 in county level, B03002_003, B03002_004, B03002_012, B03002_001 in census tract level - Analysis is based on R packages like tidycensus, tidyverse, knitr - Reliability categories were defined by MOE percentage: High (&lt;5%), Moderate (5–10%), and Low (&gt;10%) - County selection is based on reliability category and total population</p>
-<p><strong>Limitations:</strong> - Sample size constraints: There are many rural counties in Alaska have small populations, leading to inflated MOEs and unstable estimates - Temporal scope: Results are based on a single year (2022); year-to-year variability is not captured - Applicability: The MOE thresholds provide a general framework, but tolerance for uncertainty may differ depending on policy area —</p>
+<p><strong>Data Sources:</strong></p>
+<ul>
+<li><p>U.S. Census Bureau, American Community Survey 2018-2022 5-Year Estimates</p></li>
+<li><p>Retrieved via tidycensus R package on 09-24-2025</p></li>
+</ul>
+<p><strong>Reproducibility:</strong></p>
+<ul>
+<li><p>All analysis conducted in R version 2025.05.1+513</p></li>
+<li><p>Census API key required for replication</p></li>
+<li><p>Complete code and documentation available at: https://musa-5080-fall-2025.github.io/portfolio-setup-henryyzh1/</p></li>
+</ul>
+<p><strong>Methodology Notes:</strong></p>
+<ul>
+<li><p>Analysis is based on the 2022 ACS 5-year estimates for B19013_001, B01003_001 in county level, B03002_003, B03002_004, B03002_012, B03002_001 in census tract level</p></li>
+<li><p>Analysis is based on R packages like tidycensus, tidyverse, knitr</p></li>
+<li><p>Reliability categories were defined by MOE percentage: High (&lt;5%), Moderate (5–10%), and Low (&gt;10%)</p></li>
+<li><p>County selection is based on reliability category and total population</p></li>
+</ul>
+<p><strong>Limitations:</strong> - Sample size constraints: There are many rural counties in Alaska have small populations, leading to inflated MOEs and unstable estimates</p>
+<ul>
+<li><p>Temporal scope: Results are based on a single year (2022); year-to-year variability is not captured</p></li>
+<li><p>Applicability: The MOE thresholds provide a general framework, but tolerance for uncertainty may differ depending on policy area</p></li>
+</ul>
 <section id="submission-checklist" class="level2">
 <h2 class="anchored" data-anchor-id="submission-checklist">Submission Checklist</h2>
 <p>Before submitting your portfolio link on Canvas:</p>

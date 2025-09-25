@@ -23,8 +23,7 @@ website:
       - text: Assignments
         menu:
         - href: Labs/lab_1/script/assignment1.qmd
-          text: Assignment 1
-
+          text: "Assignment 1: Census Data Exploration"
 format:
   html:
     theme: cosmo

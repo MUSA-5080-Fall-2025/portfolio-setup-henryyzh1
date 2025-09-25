@@ -167,6 +167,7 @@ kable(
 )
 ```
 
+
 **Data Quality Commentary:** These results suggest that counties such as Dillingham, Yakutat, and Haines could be poorly served by algorithms relying on median income data, since their estimates have very high uncertainty. In small or remote populations like these Alaska counties, limited sample sizes could inflate margins of error. As a result, algorithms that assume the data is precise may reinforce misallocated resources in these areas.
 
 # Part 3: Neighborhood-Level Analysis
@@ -197,6 +198,7 @@ kable(
 )
 ```
 
+
 **Comment on the output:** The output shows how population size often aligns with data reliability: Anchorage, with nearly 300,000 people, has a very low MOE (3%) and thus highly reliable income data. Fairbanks, with a mid-sized population, has moderate reliability, while the sparsely populated North Slope shows much higher uncertainty (21.4%), making its income estimates less dependable for policy or algorithmic use.
 
 ## 3.2 Tract-Level Demographics
@@ -208,6 +210,7 @@ kable(
 - Variables: white alone (B03002_003), Black/African American (B03002_004), Hispanic/Latino (B03002_012), total population (B03002_001)
 - Use the same state and year as before
 - Output format: wide
+
 - **Challenge:** You'll need county codes, not names. Look at the GEOID patterns in your county data for hints.
 
 ```{r tract-demographics}
@@ -356,6 +359,7 @@ kable(
 )
 ```
 
+
 **Pattern Analysis:** Tracts with unreliable White MOE are much more common (74 vs. 12), and they tend to have slightly smaller populations on average. These unreliable tracts also show less White residents and somewhat more Hispanic population. This suggests that data quality problems are concentrated in smaller or more diverse tracts, where ACS sample sizes are limited and subgroup estimates become less precise.
 
 # Part 5: Policy Recommendations
@@ -365,10 +369,15 @@ kable(
 **Your Task:** Write an executive summary that integrates findings from all four analyses.
 
 **Executive Summary Requirements:**
+
 1. **Overall Pattern Identification**: What are the systematic patterns across all your analyses?
+
 2. **Equity Assessment**: Which communities face the greatest risk of algorithmic bias based on your findings?
+
 3. **Root Cause Analysis**: What underlying factors drive both data quality issues and bias risk?
+
 4. **Strategic Recommendations**: What should the Department implement to address these systematic issues?
+
 
 **Executive Summary:**
 
@@ -384,7 +393,7 @@ ACS sample sizes are smaller in rural and low-population tracts, which inflates 
 **Strategic Recommendations**
 The Department should prioritize three measures to strengthen equity and reliability in data-driven policy. First, apply MOE thresholds in all algorithmic workflows to flag unstable estimates before use. Second, conduct equity audits to ensure algorithms do not misallocate resources to rural or minority communities. Third, communicate uncertainty transparently so policymakers understand the limitations of ACS data in Alaska’s rural and remote contexts.
 
-## 6.3 Specific Recommendations
+## 5.2 Specific Recommendations
 
 **Your Task:** Create a decision framework for algorithm implementation.
 
@@ -460,32 +469,42 @@ These 11 counties may have algorithms being used here, but outputs should be clo
  - Yukon-Koyukuk Census Area
 These 16 counties (over half of Alaska’s total) show margins of error exceeding 10%, with some reaching above 30%. Automated decision-making here risks significant misallocation. The Department should consider manual review, multi-year or regional aggregation, or integration of supplemental state/tribal data before using these estimates.
 
-## Questions for Further Investigation
+## 5.3 Questions for Further Investigation
 1.	Are unreliable estimates spatially concentrated in rural or Arctic regions, and how does geographic isolation contribute to these patterns?
 2.	Do particular demographic groups like Alaska Native consistently face higher MOE values, and what adjustments are needed to ensure equity in algorithmic use?
 
 # Technical Notes
 
 **Data Sources:** 
+
  - U.S. Census Bureau, American Community Survey 2018-2022 5-Year Estimates
+ 
  - Retrieved via tidycensus R package on 09-24-2025
 
 **Reproducibility:** 
+
  - All analysis conducted in R version 2025.05.1+513
+ 
  - Census API key required for replication
+ 
  - Complete code and documentation available at: https://musa-5080-fall-2025.github.io/portfolio-setup-henryyzh1/
 
 **Methodology Notes:**
+
  - Analysis is based on the 2022 ACS 5-year estimates for B19013_001, B01003_001 in county level, B03002_003, B03002_004, B03002_012, B03002_001 in census tract level
+ 
  - Analysis is based on R packages like tidycensus, tidyverse, knitr
+ 
  - Reliability categories were defined by MOE percentage: High (<5%), Moderate (5–10%), and Low (>10%)
+ 
  - County selection is based on reliability category and total population
 
 **Limitations:**
  - Sample size constraints: There are many rural counties in Alaska have small populations, leading to inflated MOEs and unstable estimates
+ 
  - Temporal scope: Results are based on a single year (2022); year-to-year variability is not captured
+ 
  - Applicability: The MOE thresholds provide a general framework, but tolerance for uncertainty may differ depending on policy area
----
 
 ## Submission Checklist
 
