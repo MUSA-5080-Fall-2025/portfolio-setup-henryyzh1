@@ -1,0 +1,33 @@
+---
+title: "Week 4 Notes - Spatial Data & GIS Operations in R"
+date: "2025-09-29"
+---
+
+## Key Concepts Learned
+- Vector data (Points, lines, polygons)
+- CRS (Coordinate Reference Systems)
+- Spatial subsetting
+- Saptial join
+- Geometry operations
+
+## Coding Techniques
+- sf package
+  - st_read(), st_transform(), st_crs(), st_geometry(), st_drop_geometry()
+  - st_buffer(), st_centroid(), st_distance(), st_area(.), st_union(), st_intersection()
+  - ggplot() + geom_sf() + theme_void()
+  - st_filter(), st_intersects(), st_touches(), st_within(), st_contains(), st_overlaps(), st_disjoint()
+  - as.numeric()
+  - If no .predicate specified, uses st_intersects
+  
+
+## Questions & Challenges
+- Practice and try to remember the sf functions
+
+## Connections to Policy
+- Training data may under-represent certain areas
+- Spatial autocorrelation violates independence assumptions
+- Service delivery algorithms may reinforce geographic inequities
+
+## Reflection
+- For CRS, measuring areas in latitude/longitude gives wrong answers
+- Our mission: Understand spatial patterns to design fairer systems

@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-09-08">
+<meta name="dcterms.date" content="2025-09-29">
 
-<title>Week 1 Notes - Course Introduction – Henry Yang - MUSA 5080 Portfolio</title>
+<title>Week 4 Notes - Spatial Data &amp; GIS Operations in R – Henry Yang - MUSA 5080 Portfolio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -170,7 +170,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week 1 Notes - Course Introduction</h1>
+<h1 class="title">Week 4 Notes - Spatial Data &amp; GIS Operations in R</h1>
 </div>
 
 
@@ -181,7 +181,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 8, 2025</p>
+      <p class="date">September 29, 2025</p>
     </div>
   </div>
   
@@ -196,38 +196,46 @@ ul.task-list li input[type="checkbox"] {
 <section id="key-concepts-learned" class="level2">
 <h2 class="anchored" data-anchor-id="key-concepts-learned">Key Concepts Learned</h2>
 <ul>
-<li>Concept about Git, GitHub, repo, commit, push, pull</li>
-<li>Quarto documentation structure</li>
-<li>Basic R language grammar and dplyr functions</li>
+<li>Vector data (Points, lines, polygons)</li>
+<li>CRS (Coordinate Reference Systems)</li>
+<li>Spatial subsetting</li>
+<li>Saptial join</li>
+<li>Geometry operations</li>
 </ul>
 </section>
 <section id="coding-techniques" class="level2">
 <h2 class="anchored" data-anchor-id="coding-techniques">Coding Techniques</h2>
 <ul>
-<li>YAML header</li>
-<li>R Text formatting</li>
-<li>R Headers &amp; Lists &amp; Links</li>
-<li>dplyr select(), filter(), mutate(), summarize(), group_by()</li>
+<li>sf package
+<ul>
+<li>st_read(), st_transform(), st_crs(), st_geometry(), st_drop_geometry()</li>
+<li>st_buffer(), st_centroid(), st_distance(), st_area(.), st_union(), st_intersection()</li>
+<li>ggplot() + geom_sf() + theme_void()</li>
+<li>st_filter(), st_intersects(), st_touches(), st_within(), st_contains(), st_overlaps(), st_disjoint()</li>
+<li>as.numeric()</li>
+<li>If no .predicate specified, uses st_intersects</li>
+</ul></li>
 </ul>
 </section>
 <section id="questions-challenges" class="level2">
 <h2 class="anchored" data-anchor-id="questions-challenges">Questions &amp; Challenges</h2>
 <ul>
-<li>Understood most of the things</li>
-<li>Need to work more on push and pulls</li>
+<li>Practice and try to remember the sf functions</li>
 </ul>
 </section>
 <section id="connections-to-policy" class="level2">
 <h2 class="anchored" data-anchor-id="connections-to-policy">Connections to Policy</h2>
 <ul>
-<li>Not quite! Just an intro to GitHub.</li>
+<li>Training data may under-represent certain areas</li>
+<li>Spatial autocorrelation violates independence assumptions</li>
+<li>Service delivery algorithms may reinforce geographic inequities</li>
 </ul>
 </section>
 <section id="reflection" class="level2">
 <h2 class="anchored" data-anchor-id="reflection">Reflection</h2>
 <ul>
-<li>Learn about Mets and Eagles</li>
-<li>There are a lot to digest for a coding beginner! You are on the right track!</li>
+<li>For CRS, measuring areas in latitude/longitude gives wrong answers</li>
+<li>Our mission: Understand spatial patterns to design fairer systems</li>
 </ul>
 
 
