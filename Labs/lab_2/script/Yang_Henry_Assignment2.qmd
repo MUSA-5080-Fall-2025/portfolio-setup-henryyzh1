@@ -2,7 +2,7 @@
 title: "Assignment 2: Spatial Analysis and Visualization"
 subtitle: "Healthcare Access and Equity in Pennsylvania"
 author: "Henry Yang"
-date: 12/10/2025
+date: 10/12/2025
 format: 
   html:
     code-fold: false
@@ -65,6 +65,7 @@ library(tidyverse)
 library(tidycensus)
 library(tigris)
 library(here)
+options(tigris_progress = FALSE)
 
 # Load spatial data
 pa_counties <- counties(state = "PA", cb = TRUE)
@@ -72,9 +73,9 @@ pa_tracts <- tracts(state = "PA", cb = TRUE)
 hospitals <- st_read(here("data", "hospitals.geojson"))
 
 # Check that all data loaded correctly
-st_crs(pa_counties)
-st_crs(pa_tracts)
-st_crs(hospitals)
+nrow(pa_counties)
+nrow(pa_tracts)
+nrow(hospitals)
 ```
 
 **Questions to answer:**
@@ -369,7 +370,7 @@ Create a choropleth map showing healthcare access challenges at the county level
 ggplot() +
   geom_sf(data = vul_counties, aes(fill = pct_underserved), color = "white", size = 0.5) +
   geom_sf(data = hospitals_proj, color = "lightblue", size = 0.5) +
-  scale_fill_viridis_c(option = "plasma", name = "% of Vulnerable Tracts Underserved") +
+  scale_fill_viridis_c(option = "plasma", name = "% Underserved Tracts") +
   labs(
     title = "Healthcare Access Challenges in Pennsylvania",
     subtitle = "Blue points = Hospitals, Counties shaded by % vulnerable tracts >15 miles from nearest hospital",
@@ -626,13 +627,6 @@ phl_acs <- phl_acs %>%
 phl_tracts_acs <- phl_tracts %>%
   left_join(phl_acs, by = "GEOID")
 
-st_crs(polling)
-st_crs(bus)
-st_crs(metro)
-st_crs(rail)
-st_crs(trolley)
-st_crs(phl_tracts_acs)
-
 septa_stops <- bind_rows(
   bus %>% mutate(mode = "Bus"),
   metro %>% mutate(mode = "Metro"),
@@ -716,11 +710,6 @@ phl_tract_summary <- phl_tract_access %>%
     disabled_pop = sum(disabled_popE, na.rm = TRUE)
   )
 
-ggplot() +
-  geom_sf(data = phl_tracts_acs, fill = "white", color = "grey", size = 0.5) +
-  geom_sf(data = polling, color = "red", size = 0.1) +
-  theme_void()
-
 inaccessible_tracts <- phl_tract_access %>%
   filter(accessible == FALSE)
 
@@ -728,6 +717,11 @@ ggplot() +
   geom_sf(data = phl_tract_access, fill = "white", color = "grey", size = 0.5) +
   geom_sf(data = inaccessible_tracts, fill = "red", color = "grey", size = 0.5) +
   geom_sf(data = accessible_area_union, fill = "yellow", color = "grey", size = 0.5) +
+  labs(
+    title = "Transit Inaccesible Tracts in Philadelphia County",
+    subtitle = "Yellow areas = Polling points and SEPTA stops buffer",
+    caption = "Data: Open Data Philly Platform, SEPTA"
+  ) +
   theme_void()
 ```
 
