@@ -45,6 +45,16 @@ Load the required spatial data:
 - Pennsylvania hospitals (from lecture data)
 - Pennsylvania census tracts
 
+```{r}
+#| echo: false
+#| include: false
+#| warning: false
+#| message: false
+
+# Load Census API key securely (hidden from HTML)
+tidycensus::census_api_key("a429b978d14aa85d33761ac9dead46b91ad63915")
+```
+
 **Your Task:**
 ```{r}
 # Load required packages
@@ -55,7 +65,6 @@ library(tidyverse)
 library(tidycensus)
 library(tigris)
 library(here)
-census_api_key("a429b978d14aa85d33761ac9dead46b91ad63915")
 
 # Load spatial data
 pa_counties <- counties(state = "PA", cb = TRUE)
