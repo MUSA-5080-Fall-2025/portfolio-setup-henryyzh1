@@ -54,12 +54,13 @@ library(knitr)
 library(tidyverse)
 library(tidycensus)
 library(tigris)
+library(here)
 census_api_key("a429b978d14aa85d33761ac9dead46b91ad63915")
 
 # Load spatial data
 pa_counties <- counties(state = "PA", cb = TRUE)
 pa_tracts <- tracts(state = "PA", cb = TRUE)
-hospitals <- st_read("data/hospitals.geojson")
+hospitals <- st_read(here("data", "hospitals.geojson"))
 
 # Check that all data loaded correctly
 st_crs(pa_counties)
@@ -567,11 +568,11 @@ Choose ONE of the following challenge exercises, or propose your own research qu
 
 ```{r}
 # Load your additional dataset
-polling <- st_read("data/polling_places.geojson")
-bus <- st_read("data/septa_bus.geojson")
-metro <- st_read("data/septa_metro.geojson")
-rail <- st_read("data/septa_rail.geojson")
-trolley <- st_read("data/septa_trolley.geojson")
+polling <- st_read(here("data", "polling_places.geojson"))
+bus <- st_read(here("data", "septa_bus.geojson"))
+metro <- st_read(here("data", "septa_metro.geojson"))
+rail <- st_read(here("data", "septa_rail.geojson"))
+trolley <- st_read(here("data", "septa_trolley.geojson"))
 
 phl_tracts <- tracts(state = "PA", county = "Philadelphia", cb = TRUE)
 
@@ -734,20 +735,7 @@ The analysis used a 0.25-mile buffer to represent a reasonable walking distance 
 
 
 ## Finally - A few comments about your incorporation of feedback!
-Take a few moments to clean up your markdown document and then write a line or two or three about how you may have incorporated feedback that you recieved after your first assignment. 
+
+After receiving feedback on my first assignment, I will make several improvements to this report, removing unnecessary instruction text and private key information, and keeping only the essential tables and visualizations to maintain a clear and focused narrative.
 
 ---
-
-## Submission Requirements
-
-**What to submit:**
-
-1. **Rendered HTML document posted to your course portfolio** with all code, outputs, maps, and text
-   - Use `embed-resources: true` in YAML so it's a single file
-   - All code should run without errors
-   - All maps and charts should display correctly
-
-**File naming:** `LastName_FirstName_Assignment2.html` and `LastName_FirstName_Assignment2.qmd`
-
----
-
