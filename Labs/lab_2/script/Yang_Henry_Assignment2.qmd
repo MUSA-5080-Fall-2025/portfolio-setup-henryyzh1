@@ -38,7 +38,7 @@ Your analysis should identify counties that should be priorities for healthcare 
 
 Complete the following analysis, documenting each step with code and brief explanations:
 
-#### Step 1: Data Collection (5 points)
+#### Step 1: Data Collection
 
 Load the required spatial data:
 - Pennsylvania county boundaries
@@ -46,13 +46,12 @@ Load the required spatial data:
 - Pennsylvania census tracts
 
 ```{r}
-#| echo: false
 #| include: false
-#| warning: false
-#| message: false
-
 # Load Census API key securely (hidden from HTML)
 tidycensus::census_api_key("a429b978d14aa85d33761ac9dead46b91ad63915")
+
+options(tigris_use_casche = TRUE)
+options(tigris_process = FALSE)
 ```
 
 **Your Task:**
@@ -65,12 +64,11 @@ library(tidyverse)
 library(tidycensus)
 library(tigris)
 library(here)
-options(tigris_progress = FALSE)
 
 # Load spatial data
-pa_counties <- counties(state = "PA", cb = TRUE)
-pa_tracts <- tracts(state = "PA", cb = TRUE)
-hospitals <- st_read(here("data", "hospitals.geojson"))
+pa_counties <- counties(state = "PA", cb = TRUE, progress = FALSE)
+pa_tracts <- tracts(state = "PA", cb = TRUE, progress = FALSE)
+hospitals <- st_read(here("data", "hospitals.geojson"), quiet = TRUE)
 
 # Check that all data loaded correctly
 nrow(pa_counties)
@@ -123,7 +121,8 @@ pa_acs <- get_acs(
   state = "PA",
   year = 2022,
   survey = "acs5",
-  output = "wide"
+  output = "wide",
+  progress = FALSE
 )
 
 pa_acs <- pa_acs %>%
@@ -578,13 +577,13 @@ Choose ONE of the following challenge exercises, or propose your own research qu
 
 ```{r}
 # Load your additional dataset
-polling <- st_read(here("data", "polling_places.geojson"))
-bus <- st_read(here("data", "septa_bus.geojson"))
-metro <- st_read(here("data", "septa_metro.geojson"))
-rail <- st_read(here("data", "septa_rail.geojson"))
-trolley <- st_read(here("data", "septa_trolley.geojson"))
+polling <- st_read(here("data", "polling_places.geojson"), quiet = TRUE)
+bus <- st_read(here("data", "septa_bus.geojson"), quiet = TRUE)
+metro <- st_read(here("data", "septa_metro.geojson"), quiet = TRUE)
+rail <- st_read(here("data", "septa_rail.geojson"), quiet = TRUE)
+trolley <- st_read(here("data", "septa_trolley.geojson"), quiet = TRUE)
 
-phl_tracts <- tracts(state = "PA", county = "Philadelphia", cb = TRUE)
+phl_tracts <- tracts(state = "PA", county = "Philadelphia", cb = TRUE, progress = FALSE)
 
 phl_acs_vars <- c(
   total_pop = "B01003_001",
@@ -611,7 +610,8 @@ phl_acs <- get_acs(
   county = "Philadelphia",
   year = 2022,
   survey = "acs5",
-  output = "wide"
+  output = "wide",
+  progress = FALSE
 )
 
 phl_acs <- phl_acs %>%
@@ -634,9 +634,9 @@ septa_stops <- bind_rows(
   trolley %>% mutate(mode = "Trolley")
 )
 
-polling <- st_transform(polling, 3365)
-septa_stops <- st_transform(septa_stops, 3365)
-phl_tracts_acs <- st_transform(phl_tracts_acs, 3365)
+polling <- st_transform(polling, 3365, quiet = TRUE)
+septa_stops <- st_transform(septa_stops, 3365, quiet = TRUE)
+phl_tracts_acs <- st_transform(phl_tracts_acs, 3365, quiet = TRUE)
 
 nrow(polling)
 nrow(septa_stops)

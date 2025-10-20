@@ -39,12 +39,12 @@ Drawing on our Week 2 discussion of algorithmic bias, you need to assess not jus
 library(tidycensus)
 library(tidyverse)
 library(knitr)
+```
 
+```{r setup2}
+knitr::opts_chunk$set(include = FALSE)
 # Set your Census API key
 census_api_key(Sys.getenv("a429b978d14aa85d33761ac9dead46b91ad63915"), install = TRUE, overwrite = TRUE)
-
-# Choose your state for analysis - assign it to a variable called my_state
-state_choice <- "AK"
 ```
 
 **State Selection:** I have chosen **Alaska** for this analysis because: Far away from the continental america, beautiful and mysterious, tempting me to explore it.
@@ -72,7 +72,8 @@ ak_demo <- get_acs(
   geography = "county",
   variables = c(
     med_inc = "B19013_001",
-    tot_pop = "B01003_001"
+    tot_pop = "B01003_001",
+    progree = FALSE
   ),
   state = "AK",
   year = 2022,
@@ -216,7 +217,8 @@ tract_demo <- get_acs(
   county = tract_code,
   year = 2022,
   variables = races,
-  output = "wide"
+  output = "wide",
+  progree = FALSE
 )
 
 # Calculate percentage of each group using mutate()
@@ -232,8 +234,6 @@ tract_demo_pct <- tract_demo %>%
                   str_remove("Census Tract [0-9.]+; ") %>%
                   str_remove("; Alaska")
   )
-
-tract_demo
 ```
 
 ## 3.3 Demographic Analysis
@@ -247,8 +247,6 @@ high_hispanic <- tract_demo_pct %>%
   arrange(desc(pct_hispanic)) %>%
   slice(1) %>%
   select(tract_name, county_name, pct_hispanic, hispanicE, totalE)
-
-high_hispanic
 
 # Calculate average demographics by county using group_by() and summarize()
 # Show: number of tracts, average percentage for each racial/ethnic group
