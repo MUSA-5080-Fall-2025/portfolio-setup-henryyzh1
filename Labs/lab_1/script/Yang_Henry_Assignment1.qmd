@@ -42,7 +42,8 @@ library(knitr)
 ```
 
 ```{r setup2}
-knitr::opts_chunk$set(include = FALSE)
+#| eval: false
+#| include: true
 # Set your Census API key
 census_api_key(Sys.getenv("a429b978d14aa85d33761ac9dead46b91ad63915"), install = TRUE, overwrite = TRUE)
 ```

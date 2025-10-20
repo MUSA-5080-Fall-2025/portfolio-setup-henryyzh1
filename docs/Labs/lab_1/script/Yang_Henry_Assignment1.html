@@ -299,12 +299,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">include =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your Census API key</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">census_api_key</span>(<span class="fu">Sys.getenv</span>(<span class="st">"a429b978d14aa85d33761ac9dead46b91ad63915"</span>), <span class="at">install =</span> <span class="cn">TRUE</span>, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] ""</code></pre>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your Census API key</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">census_api_key</span>(<span class="fu">Sys.getenv</span>(<span class="st">"a429b978d14aa85d33761ac9dead46b91ad63915"</span>), <span class="at">install =</span> <span class="cn">TRUE</span>, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>State Selection:</strong> I have chosen <strong>Alaska</strong> for this analysis because: Far away from the continental america, beautiful and mysterious, tempting me to explore it.</p>
 </section>
@@ -316,6 +312,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Requirements:</strong> - Geography: county level - Variables: median household income (B19013_001) and total population (B01003_001)<br>
 - Year: 2022 - Survey: acs5 - Output format: wide</p>
 <p><strong>Hint:</strong> Remember to give your variables descriptive names using the <code>variables = c(name = "code")</code> syntax.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your get_acs() code here</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean the county names to remove state name and "County" </span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Hint: use mutate() with str_remove()</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>ak_demo <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">geography =</span> <span class="st">"county"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">variables =</span> <span class="fu">c</span>(</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">med_inc =</span> <span class="st">"B19013_001"</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">tot_pop =</span> <span class="st">"B01003_001"</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">progree =</span> <span class="cn">FALSE</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">state =</span> <span class="st">"AK"</span>,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="dv">2022</span>,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">output =</span> <span class="st">"wide"</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">county_name =</span> <span class="fu">str_remove</span>(NAME, <span class="st">", Alaska"</span>))</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first few rows</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ak_demo)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 7
+  GEOID NAME                     med_incE med_incM tot_popE tot_popM county_name
+  &lt;chr&gt; &lt;chr&gt;                       &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;      
+1 02013 Aleutians East Borough,…    79961     6768     3407       NA Aleutians …
+2 02016 Aleutians West Census A…   100662     7734     5219       NA Aleutians …
+3 02020 Anchorage Municipality,…    95731     2829   290674       NA Anchorage …
+4 02050 Bethel Census Area, Ala…    64094     6460    18538       NA Bethel Cen…
+5 02060 Bristol Bay Borough, Al…    94167    12682      854       87 Bristol Ba…
+6 02063 Chugach Census Area, Al…    83068    10732     7000       NA Chugach Ce…</code></pre>
+</div>
+</div>
 </section>
 <section id="data-quality-assessment" class="level2">
 <h2 class="anchored" data-anchor-id="data-quality-assessment">2.2 Data Quality Assessment</h2>
@@ -323,12 +350,117 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Requirements:</strong> - Calculate MOE percentage: (margin of error / estimate) * 100 - Create reliability categories: - High Confidence: MOE &lt; 5% - Moderate Confidence: MOE 5-10%<br>
 - Low Confidence: MOE &gt; 10% - Create a flag for unreliable estimates (MOE &gt; 10%)</p>
 <p><strong>Hint:</strong> Use <code>mutate()</code> with <code>case_when()</code> for the categories.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate MOE percentage and reliability categories using mutate()</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>ct_reliability <span class="ot">&lt;-</span> ak_demo <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">medinc_moe_pct =</span> (med_incM <span class="sc">/</span> med_incE) <span class="sc">*</span> <span class="dv">100</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">reliability_cat =</span> <span class="fu">case_when</span>(</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>      medinc_moe_pct <span class="sc">&lt;</span> <span class="dv">5</span> <span class="sc">~</span> <span class="st">"High Confidence (&lt;5%)"</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>      medinc_moe_pct <span class="sc">&lt;=</span> <span class="dv">10</span> <span class="sc">~</span> <span class="st">"Moderate Confidence (5~10%)"</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Low Confidence (&gt;10%)"</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">unreliable_flag =</span> <span class="fu">case_when</span>(</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>      medinc_moe_pct <span class="sc">&gt;</span> <span class="dv">10</span> <span class="sc">~</span> <span class="st">"🔴"</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a summary showing count of counties in each reliability category</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Hint: use count() and mutate() to add percentages</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>reliability_summary <span class="ot">&lt;-</span> ct_reliability <span class="sc">%&gt;%</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(reliability_cat) <span class="sc">%&gt;%</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pct =</span> <span class="fu">round</span>(<span class="dv">100</span> <span class="sc">*</span> n <span class="sc">/</span> <span class="fu">sum</span>(n), <span class="dv">1</span>))</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>reliability_summary</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  reliability_cat                 n   pct
+  &lt;chr&gt;                       &lt;int&gt; &lt;dbl&gt;
+1 High Confidence (&lt;5%)           3  10  
+2 Low Confidence (&gt;10%)          16  53.3
+3 Moderate Confidence (5~10%)    11  36.7</code></pre>
+</div>
+</div>
 </section>
 <section id="high-uncertainty-counties" class="level2">
 <h2 class="anchored" data-anchor-id="high-uncertainty-counties">2.3 High Uncertainty Counties</h2>
 <p><strong>Your Task:</strong> Identify the 5 counties with the highest MOE percentages.</p>
 <p><strong>Requirements:</strong> - Sort by MOE percentage (highest first) - Select the top 5 counties - Display: county name, median income, margin of error, MOE percentage, reliability category - Format as a professional table using <code>kable()</code></p>
 <p><strong>Hint:</strong> Use <code>arrange()</code>, <code>slice()</code>, and <code>select()</code> functions.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create table of top 5 counties by MOE percentage</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>high_uncertainty <span class="ot">&lt;-</span> ct_reliability <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(medinc_moe_pct)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(NAME, med_incE, med_incM, medinc_moe_pct, reliability_cat)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Format as table with kable() - include appropriate column names and caption</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  high_uncertainty,</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"County"</span>, <span class="st">"Median Income"</span>, <span class="st">"Margin of Error"</span>, <span class="st">"MOE %"</span>, <span class="st">"Reliability"</span>),</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">"Top 5 Alaska Counties with Highest Median Income MOE Percentage"</span>,</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">big.mark =</span> <span class="st">","</span>),</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">digits =</span> <span class="dv">1</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Top 5 Alaska Counties with Highest Median Income MOE Percentage</caption>
+<colgroup>
+<col style="width: 36%">
+<col style="width: 15%">
+<col style="width: 17%">
+<col style="width: 6%">
+<col style="width: 24%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">County</th>
+<th style="text-align: right;">Median Income</th>
+<th style="text-align: right;">Margin of Error</th>
+<th style="text-align: right;">MOE %</th>
+<th style="text-align: left;">Reliability</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Dillingham Census Area, Alaska</td>
+<td style="text-align: right;">69,412</td>
+<td style="text-align: right;">26,682</td>
+<td style="text-align: right;">38.4</td>
+<td style="text-align: left;">Low Confidence (&gt;10%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Yakutat City and Borough, Alaska</td>
+<td style="text-align: right;">76,875</td>
+<td style="text-align: right;">23,980</td>
+<td style="text-align: right;">31.2</td>
+<td style="text-align: left;">Low Confidence (&gt;10%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Haines Borough, Alaska</td>
+<td style="text-align: right;">68,276</td>
+<td style="text-align: right;">17,797</td>
+<td style="text-align: right;">26.1</td>
+<td style="text-align: left;">Low Confidence (&gt;10%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">North Slope Borough, Alaska</td>
+<td style="text-align: right;">83,472</td>
+<td style="text-align: right;">17,869</td>
+<td style="text-align: right;">21.4</td>
+<td style="text-align: left;">Low Confidence (&gt;10%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Petersburg Borough, Alaska</td>
+<td style="text-align: right;">77,826</td>
+<td style="text-align: right;">13,410</td>
+<td style="text-align: right;">17.2</td>
+<td style="text-align: left;">Low Confidence (&gt;10%)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><strong>Data Quality Commentary:</strong> These results suggest that counties such as Dillingham, Yakutat, and Haines could be poorly served by algorithms relying on median income data, since their estimates have very high uncertainty. In small or remote populations like these Alaska counties, limited sample sizes could inflate margins of error. As a result, algorithms that assume the data is precise may reinforce misallocated resources in these areas.</p>
 </section>
 </section>
@@ -338,6 +470,69 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="focus-area-selection">3.1 Focus Area Selection</h2>
 <p><strong>Your Task:</strong> Select 2-3 counties from your reliability analysis for detailed tract-level study.</p>
 <p><strong>Strategy:</strong> Choose counties that represent different reliability levels (e.g., 1 high confidence, 1 moderate, 1 low confidence) to compare how data quality varies.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use filter() to select 2-3 counties from your county_reliability data</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Store the selected counties in a variable called selected_counties</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>selected_ct <span class="ot">&lt;-</span> ct_reliability <span class="sc">%&gt;%</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(NAME <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Anchorage Municipality, Alaska"</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"Fairbanks North Star Borough, Alaska"</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"North Slope Borough, Alaska"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(NAME, tot_popE, med_incE, medinc_moe_pct, reliability_cat)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the selected counties with their key characteristics</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Show: county name, median income, MOE percentage, reliability category</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  selected_ct,</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"County"</span>, <span class="st">"Total Population"</span>, <span class="st">"Median Income"</span>, <span class="st">"MOE %"</span>, <span class="st">"Reliability"</span>),</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">"Selected Alaska Counties with Highest Median Income MOE Percentage"</span>,</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">big.mark =</span> <span class="st">","</span>),</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">digits =</span> <span class="dv">1</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Selected Alaska Counties with Highest Median Income MOE Percentage</caption>
+<colgroup>
+<col style="width: 36%">
+<col style="width: 16%">
+<col style="width: 13%">
+<col style="width: 5%">
+<col style="width: 27%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">County</th>
+<th style="text-align: right;">Total Population</th>
+<th style="text-align: right;">Median Income</th>
+<th style="text-align: right;">MOE %</th>
+<th style="text-align: left;">Reliability</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Anchorage Municipality, Alaska</td>
+<td style="text-align: right;">290,674</td>
+<td style="text-align: right;">95,731</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: left;">High Confidence (&lt;5%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fairbanks North Star Borough, Alaska</td>
+<td style="text-align: right;">96,299</td>
+<td style="text-align: right;">81,655</td>
+<td style="text-align: right;">5.7</td>
+<td style="text-align: left;">Moderate Confidence (5~10%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">North Slope Borough, Alaska</td>
+<td style="text-align: right;">10,924</td>
+<td style="text-align: right;">83,472</td>
+<td style="text-align: right;">21.4</td>
+<td style="text-align: left;">Low Confidence (&gt;10%)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><strong>Comment on the output:</strong> The output shows how population size often aligns with data reliability: Anchorage, with nearly 300,000 people, has a very low MOE (3%) and thus highly reliable income data. Fairbanks, with a mid-sized population, has moderate reliability, while the sparsely populated North Slope shows much higher uncertainty (21.4%), making its income estimates less dependable for policy or algorithmic use.</p>
 </section>
 <section id="tract-level-demographics" class="level2">
@@ -345,10 +540,112 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Your Task:</strong> Get demographic data for census tracts in your selected counties.</p>
 <p><strong>Requirements:</strong> - Geography: tract level - Variables: white alone (B03002_003), Black/African American (B03002_004), Hispanic/Latino (B03002_012), total population (B03002_001) - Use the same state and year as before - Output format: wide</p>
 <p><strong>Challenge:</strong> You’ll need county codes, not names. Look at the GEOID patterns in your county data for hints.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define your race/ethnicity variables with descriptive names</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>races <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">white =</span> <span class="st">"B03002_003"</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">black =</span> <span class="st">"B03002_004"</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">hispanic =</span> <span class="st">"B03002_012"</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">total =</span> <span class="st">"B03002_001"</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>tract_code <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"020"</span>, <span class="st">"090"</span>, <span class="st">"185"</span>)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Use get_acs() to retrieve tract-level data</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Hint: You may need to specify county codes in the county parameter</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>tract_demo <span class="ot">&lt;-</span> <span class="fu">get_acs</span>(</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">geography =</span> <span class="st">"tract"</span>,</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">state =</span> <span class="st">"AK"</span>,</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">county =</span> tract_code,</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="dv">2022</span>,</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">variables =</span> races,</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">output =</span> <span class="st">"wide"</span>,</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">progree =</span> <span class="cn">FALSE</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate percentage of each group using mutate()</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Create percentages for white, Black, and Hispanic populations</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Add readable tract and county name columns using str_extract() or similar</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>tract_demo_pct <span class="ot">&lt;-</span> tract_demo <span class="sc">%&gt;%</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">pct_white =</span> <span class="dv">100</span> <span class="sc">*</span> whiteE <span class="sc">/</span> totalE,</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">pct_black =</span> <span class="dv">100</span> <span class="sc">*</span> blackE <span class="sc">/</span> totalE,</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">pct_hispanic =</span> <span class="dv">100</span> <span class="sc">*</span> hispanicE <span class="sc">/</span> totalE,</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">tract_name =</span> <span class="fu">str_extract</span>(NAME, <span class="st">"Census Tract [0-9.]+"</span>),</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">county_name =</span> NAME <span class="sc">%&gt;%</span></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">str_remove</span>(<span class="st">"Census Tract [0-9.]+; "</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">str_remove</span>(<span class="st">"; Alaska"</span>)</span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
 <section id="demographic-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="demographic-analysis">3.3 Demographic Analysis</h2>
 <p><strong>Your Task:</strong> Analyze the demographic patterns in your selected areas.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the tract with the highest percentage of Hispanic/Latino residents</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Hint: use arrange() and slice() to get the top tract</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>high_hispanic <span class="ot">&lt;-</span> tract_demo_pct <span class="sc">%&gt;%</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(pct_hispanic)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(tract_name, county_name, pct_hispanic, hispanicE, totalE)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate average demographics by county using group_by() and summarize()</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Show: number of tracts, average percentage for each racial/ethnic group</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>ct_avg_demo <span class="ot">&lt;-</span> tract_demo_pct <span class="sc">%&gt;%</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(county_name) <span class="sc">%&gt;%</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_tracts =</span> <span class="fu">n</span>(),</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">avg_pct_white =</span> <span class="fu">mean</span>(pct_white, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">avg_pct_black =</span> <span class="fu">mean</span>(pct_black, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">avg_pct_hispanic =</span> <span class="fu">mean</span>(pct_hispanic, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n_tracts))</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a nicely formatted table of your results using kable()</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>  ct_avg_demo,</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"County"</span>, <span class="st">"# Tracts"</span>, <span class="st">"White %"</span>, <span class="st">"Black %"</span>, <span class="st">"Hispanic %"</span>),</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">"Average Racial/Ethnic Composition by County (Tract-Level Averages)"</span>,</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">digits =</span> <span class="dv">1</span></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Average Racial/Ethnic Composition by County (Tract-Level Averages)</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">County</th>
+<th style="text-align: right;"># Tracts</th>
+<th style="text-align: right;">White %</th>
+<th style="text-align: right;">Black %</th>
+<th style="text-align: right;">Hispanic %</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Anchorage Municipality</td>
+<td style="text-align: right;">61</td>
+<td style="text-align: right;">55.5</td>
+<td style="text-align: right;">5.4</td>
+<td style="text-align: right;">9.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fairbanks North Star Borough</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">68.0</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">7.8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">North Slope Borough</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">32.6</td>
+<td style="text-align: right;">1.6</td>
+<td style="text-align: right;">3.6</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </section>
 </section>
 <section id="part-4-comprehensive-data-quality-evaluation" class="level1">
@@ -357,11 +654,113 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="moe-analysis-for-demographic-variables">4.1 MOE Analysis for Demographic Variables</h2>
 <p><strong>Your Task:</strong> Examine margins of error for demographic variables to see if some communities have less reliable data.</p>
 <p><strong>Requirements:</strong> - Calculate MOE percentages for each demographic variable - Flag tracts where any demographic variable has MOE &gt; 15% - Create summary statistics</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate MOE percentages for white, Black, and Hispanic variables</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Hint: use the same formula as before (margin/estimate * 100)</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a flag for tracts with high MOE on any demographic variable</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Use logical operators (| for OR) in an ifelse() statement</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>tract_reliability <span class="ot">&lt;-</span> tract_demo <span class="sc">%&gt;%</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">white_moe_pct =</span> (whiteM <span class="sc">/</span> whiteE) <span class="sc">*</span> <span class="dv">100</span>,</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">black_moe_pct =</span> (blackM <span class="sc">/</span> blackE) <span class="sc">*</span> <span class="dv">100</span>,</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">hispanic_moe_pct =</span> (hispanicM <span class="sc">/</span> hispanicE) <span class="sc">*</span> <span class="dv">100</span>,</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">unreliable_flag =</span> <span class="fu">case_when</span>(</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>      white_moe_pct <span class="sc">&gt;</span> <span class="dv">15</span> <span class="sc">|</span> black_moe_pct <span class="sc">&gt;</span> <span class="dv">15</span> <span class="sc">|</span> hispanic_moe_pct <span class="sc">&gt;</span> <span class="dv">15</span> <span class="sc">~</span> <span class="st">"🔴"</span>),</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">tract_name =</span> <span class="fu">str_extract</span>(NAME, <span class="st">"Census Tract [0-9.]+"</span>),</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">county_name =</span> NAME <span class="sc">%&gt;%</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">str_remove</span>(<span class="st">"Census Tract [0-9.]+; "</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">str_remove</span>(<span class="st">"; Alaska"</span>)</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Create summary statistics showing how many tracts have data quality issues</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>ct_moe_summary <span class="ot">&lt;-</span> tract_reliability <span class="sc">%&gt;%</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(county_name) <span class="sc">%&gt;%</span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_tracts =</span> <span class="fu">n</span>(),</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">unreliable_tracts =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(unreliable_flag))</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>ct_moe_summary</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  county_name                  total_tracts unreliable_tracts
+  &lt;chr&gt;                               &lt;int&gt;             &lt;int&gt;
+1 Anchorage Municipality                 61                61
+2 Fairbanks North Star Borough           22                22
+3 North Slope Borough                     3                 3</code></pre>
+</div>
+</div>
 <p><strong>Conclusion:</strong> All of the tracts are unreliable!</p>
 </section>
 <section id="pattern-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="pattern-analysis">4.2 Pattern Analysis</h2>
 <p><strong>Your Task:</strong> Investigate whether data quality problems are randomly distributed or concentrated in certain types of communities.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Group tracts by whether they have high MOE issues</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Since all of the tracts have high MOE issues, I will be only using high MOE of white only population for analysis.</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate average characteristics for each group:</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># - population size, demographic percentages</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Use group_by() and summarize() to create this comparison</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>race_summary <span class="ot">&lt;-</span> tract_reliability <span class="sc">%&gt;%</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">high_white_moe =</span> white_moe_pct <span class="sc">&gt;</span> <span class="dv">15</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(high_white_moe) <span class="sc">%&gt;%</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_tracts =</span> <span class="fu">n</span>(),</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">avg_population =</span> <span class="fu">mean</span>(totalE, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">avg_pct_white =</span> <span class="fu">mean</span>((whiteE <span class="sc">/</span> totalE)[<span class="fu">is.finite</span>(whiteE <span class="sc">/</span> totalE)], <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">*</span> <span class="dv">100</span>,</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">avg_pct_black =</span> <span class="fu">mean</span>((blackE <span class="sc">/</span> totalE)[<span class="fu">is.finite</span>(blackE <span class="sc">/</span> totalE)], <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">*</span> <span class="dv">100</span>,</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">avg_pct_hisp =</span> <span class="fu">mean</span>((hispanicE <span class="sc">/</span> totalE)[<span class="fu">is.finite</span>(hispanicE <span class="sc">/</span> totalE)], <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a professional table showing the patterns</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>  race_summary,</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Unreliable Tracts"</span>, <span class="st">"# Tracts"</span>, <span class="st">"Average Population"</span>, <span class="st">"White %"</span>, <span class="st">"Black %"</span>, <span class="st">"Hispanic %"</span>),</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">"Comparison of Tracts by White Alone MOE Reliability"</span>,</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">digits =</span> <span class="dv">1</span></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Comparison of Tracts by White Alone MOE Reliability</caption>
+<colgroup>
+<col style="width: 24%">
+<col style="width: 12%">
+<col style="width: 26%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Unreliable Tracts</th>
+<th style="text-align: right;"># Tracts</th>
+<th style="text-align: right;">Average Population</th>
+<th style="text-align: right;">White %</th>
+<th style="text-align: right;">Black %</th>
+<th style="text-align: right;">Hispanic %</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">4899.2</td>
+<td style="text-align: right;">68.6</td>
+<td style="text-align: right;">4.7</td>
+<td style="text-align: right;">7.7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: right;">74</td>
+<td style="text-align: right;">4582.5</td>
+<td style="text-align: right;">56.2</td>
+<td style="text-align: right;">4.8</td>
+<td style="text-align: right;">9.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><strong>Pattern Analysis:</strong> Tracts with unreliable White MOE are much more common (74 vs.&nbsp;12), and they tend to have slightly smaller populations on average. These unreliable tracts also show less White residents and somewhat more Hispanic population. This suggests that data quality problems are concentrated in smaller or more diverse tracts, where ACS sample sizes are limited and subgroup estimates become less precise.</p>
 </section>
 </section>
@@ -386,6 +785,267 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="specific-recommendations" class="level2">
 <h2 class="anchored" data-anchor-id="specific-recommendations">5.2 Specific Recommendations</h2>
 <p><strong>Your Task:</strong> Create a decision framework for algorithm implementation.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a summary table using your county reliability data</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Include: county name, median income, MOE percentage, reliability category</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>ct_reliability_sum <span class="ot">&lt;-</span> ct_reliability <span class="sc">%&gt;%</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(NAME, med_incE, medinc_moe_pct, reliability_cat)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a new column with algorithm recommendations using case_when():</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># - High Confidence: "Safe for algorithmic decisions"</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co"># - Moderate Confidence: "Use with caution - monitor outcomes"  </span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co"># - Low Confidence: "Requires manual review or additional data"</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>ct_recommendation <span class="ot">&lt;-</span> ct_reliability_sum <span class="sc">%&gt;%</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">Recommendation =</span> <span class="fu">case_when</span>(</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>      reliability_cat <span class="sc">==</span> <span class="st">"High Confidence (&lt;5%)"</span> <span class="sc">~</span> <span class="st">"Safe for algorithmic decisions"</span>,</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>      reliability_cat <span class="sc">==</span> <span class="st">"Moderate Confidence (5~10%)"</span> <span class="sc">~</span> <span class="st">"Use with caution - monitor outcomes"</span>,</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>      reliability_cat <span class="sc">==</span> <span class="st">"Low Confidence (&gt;10%)"</span> <span class="sc">~</span> <span class="st">"Requires manual review or additional data"</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Format as a professional table with kable()</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>  ct_recommendation,</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"County"</span>, <span class="st">"Median Income"</span>, <span class="st">"MOE %"</span>, <span class="st">"Reliability"</span>, <span class="st">"Recommendation"</span>),</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">"Algorithm Implementation Framework by County for Alaska"</span>,</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">format.args =</span> <span class="fu">list</span>(<span class="at">big.mark =</span> <span class="st">","</span>),</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">digits =</span> <span class="dv">1</span></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Algorithm Implementation Framework by County for Alaska</caption>
+<colgroup>
+<col style="width: 31%">
+<col style="width: 10%">
+<col style="width: 4%">
+<col style="width: 21%">
+<col style="width: 31%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">County</th>
+<th style="text-align: right;">Median Income</th>
+<th style="text-align: right;">MOE %</th>
+<th style="text-align: left;">Reliability</th>
+<th style="text-align: left;">Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Aleutians East Borough, Alaska</td>
+<td style="text-align: right;">79,961</td>
+<td style="text-align: right;">8.5</td>
+<td style="text-align: left;">Moderate Confidence (5~10%)</td>
+<td style="text-align: left;">Use with caution - monitor outcomes</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Aleutians West Census Area, Alaska</td>
+<td style="text-align: right;">100,662</td>
+<td style="text-align: right;">7.7</td>
+<td style="text-align: left;">Moderate Confidence (5~10%)</td>
+<td style="text-align: left;">Use with caution - monitor outcomes</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Anchorage Municipality, Alaska</td>
+<td style="text-align: right;">95,731</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: left;">High Confidence (&lt;5%)</td>
+<td style="text-align: left;">Safe for algorithmic decisions</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Bethel Census Area, Alaska</td>
+<td style="text-align: right;">64,094</td>
+<td style="text-align: right;">10.1</td>
+<td style="text-align: left;">Low Confidence (&gt;10%)</td>
+<td style="text-align: left;">Requires manual review or additional data</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Bristol Bay Borough, Alaska</td>
+<td style="text-align: right;">94,167</td>
+<td style="text-align: right;">13.5</td>
+<td style="text-align: left;">Low Confidence (&gt;10%)</td>
+<td style="text-align: left;">Requires manual review or additional data</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chugach Census Area, Alaska</td>
+<td style="text-align: right;">83,068</td>
+<td style="text-align: right;">12.9</td>
+<td style="text-align: left;">Low Confidence (&gt;10%)</td>
+<td style="text-align: left;">Requires manual review or additional data</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Copper River Census Area, Alaska</td>
+<td style="text-align: right;">70,606</td>
+<td style="text-align: right;">13.3</td>
+<td style="text-align: left;">Low Confidence (&gt;10%)</td>
+<td style="text-align: left;">Requires manual review or additional data</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Denali Borough, Alaska</td>
+<td style="text-align: right;">87,292</td>
+<td style="text-align: right;">11.6</td>
+<td style="text-align: left;">Low Confidence (&gt;10%)</td>
+<td style="text-align: left;">Requires manual review or additional data</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Dillingham Census Area, Alaska</td>
+<td style="text-align: right;">69,412</td>
+<td style="text-align: right;">38.4</td>
+<td style="text-align: left;">Low Confidence (&gt;10%)</td>
+<td style="text-align: left;">Requires manual review or additional data</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fairbanks North Star Borough, Alaska</td>
+<td style="text-align: right;">81,655</td>
+<td style="text-align: right;">5.7</td>
+<td style="text-align: left;">Moderate Confidence (5~10%)</td>
+<td style="text-align: left;">Use with caution - monitor outcomes</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Haines Borough, Alaska</td>
+<td style="text-align: right;">68,276</td>
+<td style="text-align: right;">26.1</td>
+<td style="text-align: left;">Low Confidence (&gt;10%)</td>
+<td style="text-align: left;">Requires manual review or additional data</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Hoonah-Angoon Census Area, Alaska</td>
+<td style="text-align: right;">62,344</td>
+<td style="text-align: right;">8.8</td>
+<td style="text-align: left;">Moderate Confidence (5~10%)</td>
+<td style="text-align: left;">Use with caution - monitor outcomes</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Juneau City and Borough, Alaska</td>
+<td style="text-align: right;">95,711</td>
+<td style="text-align: right;">7.1</td>
+<td style="text-align: left;">Moderate Confidence (5~10%)</td>
+<td style="text-align: left;">Use with caution - monitor outcomes</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Kenai Peninsula Borough, Alaska</td>
+<td style="text-align: right;">76,272</td>
+<td style="text-align: right;">4.5</td>
+<td style="text-align: left;">High Confidence (&lt;5%)</td>
+<td style="text-align: left;">Safe for algorithmic decisions</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ketchikan Gateway Borough, Alaska</td>
+<td style="text-align: right;">82,763</td>
+<td style="text-align: right;">6.7</td>
+<td style="text-align: left;">Moderate Confidence (5~10%)</td>
+<td style="text-align: left;">Use with caution - monitor outcomes</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Kodiak Island Borough, Alaska</td>
+<td style="text-align: right;">91,138</td>
+<td style="text-align: right;">12.2</td>
+<td style="text-align: left;">Low Confidence (&gt;10%)</td>
+<td style="text-align: left;">Requires manual review or additional data</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Kusilvak Census Area, Alaska</td>
+<td style="text-align: right;">42,663</td>
+<td style="text-align: right;">7.9</td>
+<td style="text-align: left;">Moderate Confidence (5~10%)</td>
+<td style="text-align: left;">Use with caution - monitor outcomes</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Lake and Peninsula Borough, Alaska</td>
+<td style="text-align: right;">61,607</td>
+<td style="text-align: right;">11.7</td>
+<td style="text-align: left;">Low Confidence (&gt;10%)</td>
+<td style="text-align: left;">Requires manual review or additional data</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Matanuska-Susitna Borough, Alaska</td>
+<td style="text-align: right;">86,435</td>
+<td style="text-align: right;">2.9</td>
+<td style="text-align: left;">High Confidence (&lt;5%)</td>
+<td style="text-align: left;">Safe for algorithmic decisions</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Nome Census Area, Alaska</td>
+<td style="text-align: right;">70,121</td>
+<td style="text-align: right;">5.1</td>
+<td style="text-align: left;">Moderate Confidence (5~10%)</td>
+<td style="text-align: left;">Use with caution - monitor outcomes</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">North Slope Borough, Alaska</td>
+<td style="text-align: right;">83,472</td>
+<td style="text-align: right;">21.4</td>
+<td style="text-align: left;">Low Confidence (&gt;10%)</td>
+<td style="text-align: left;">Requires manual review or additional data</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Northwest Arctic Borough, Alaska</td>
+<td style="text-align: right;">77,647</td>
+<td style="text-align: right;">8.0</td>
+<td style="text-align: left;">Moderate Confidence (5~10%)</td>
+<td style="text-align: left;">Use with caution - monitor outcomes</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Petersburg Borough, Alaska</td>
+<td style="text-align: right;">77,826</td>
+<td style="text-align: right;">17.2</td>
+<td style="text-align: left;">Low Confidence (&gt;10%)</td>
+<td style="text-align: left;">Requires manual review or additional data</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Prince of Wales-Hyder Census Area, Alaska</td>
+<td style="text-align: right;">61,779</td>
+<td style="text-align: right;">5.6</td>
+<td style="text-align: left;">Moderate Confidence (5~10%)</td>
+<td style="text-align: left;">Use with caution - monitor outcomes</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sitka City and Borough, Alaska</td>
+<td style="text-align: right;">95,261</td>
+<td style="text-align: right;">5.8</td>
+<td style="text-align: left;">Moderate Confidence (5~10%)</td>
+<td style="text-align: left;">Use with caution - monitor outcomes</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Skagway Municipality, Alaska</td>
+<td style="text-align: right;">79,583</td>
+<td style="text-align: right;">13.6</td>
+<td style="text-align: left;">Low Confidence (&gt;10%)</td>
+<td style="text-align: left;">Requires manual review or additional data</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Southeast Fairbanks Census Area, Alaska</td>
+<td style="text-align: right;">75,378</td>
+<td style="text-align: right;">10.3</td>
+<td style="text-align: left;">Low Confidence (&gt;10%)</td>
+<td style="text-align: left;">Requires manual review or additional data</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Wrangell City and Borough, Alaska</td>
+<td style="text-align: right;">61,000</td>
+<td style="text-align: right;">15.5</td>
+<td style="text-align: left;">Low Confidence (&gt;10%)</td>
+<td style="text-align: left;">Requires manual review or additional data</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Yakutat City and Borough, Alaska</td>
+<td style="text-align: right;">76,875</td>
+<td style="text-align: right;">31.2</td>
+<td style="text-align: left;">Low Confidence (&gt;10%)</td>
+<td style="text-align: left;">Requires manual review or additional data</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Yukon-Koyukuk Census Area, Alaska</td>
+<td style="text-align: right;">47,826</td>
+<td style="text-align: right;">12.2</td>
+<td style="text-align: left;">Low Confidence (&gt;10%)</td>
+<td style="text-align: left;">Requires manual review or additional data</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p><strong>Key Recommendations:</strong></p>
 <p><strong>Your Task:</strong> Use your analysis results to provide specific guidance to the department.</p>
 <ol type="1">
