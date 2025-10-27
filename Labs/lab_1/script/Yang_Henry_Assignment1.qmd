@@ -41,13 +41,6 @@ library(tidyverse)
 library(knitr)
 ```
 
-```{r setup2}
-#| eval: false
-#| include: true
-# Set your Census API key
-census_api_key(Sys.getenv("a429b978d14aa85d33761ac9dead46b91ad63915"), install = TRUE, overwrite = TRUE)
-```
-
 **State Selection:** I have chosen **Alaska** for this analysis because: Far away from the continental america, beautiful and mysterious, tempting me to explore it.
 
 # Part 2: County-Level Resource Assessment

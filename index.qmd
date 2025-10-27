@@ -15,7 +15,7 @@ Advanced spatial analysis and data science for urban planning and public policy.
 - **Final Project:** Capstone modeling challenge
 
 ## About Me
-Hi all!! I'm Zihang Yang from Shenzhen, China --- go by Henry. Currently I'm on my Master's studies of Smart Cities --- City Planning in UPenn, graduating in 2026. After my five years of undergraduate studies in Urban Planning and Design, I'm equipped with 2D/3D design and data analysis skills. Always welcome to talk furtuer about spatial data analysis and urban planning stuffs!
+Henry Yang, from Shenzhen, China, is pursuing his Master’s studies in City Planning at the University of Pennsylvania, focusing on Smart Cities. He brings with him five years of undergraduate training in Urban Planning and Design, where he developed a strong foundation in both spatial design and data analytics. His interests lie at the intersection of technology and the built environment — exploring how data, mapping, and design thinking can inform smarter and more sustainable urban systems.
 
 ## Contact
 - **Email:** henryyzh@upenn.edu

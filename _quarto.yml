@@ -28,6 +28,12 @@ website:
           text: "Assignment 1: Census Data Exploration"
         - href: Labs/lab_2/script/Yang_Henry_Assignment2.qmd
           text: "Assignment 2: Spatial Analysis and Visualization"
+      - text: Midterm
+        menu: 
+          - href: midterm/appendix/Midterm_2025.qmd
+            text: "Single-Family Home Price Prediction in Philadelphia"
+          - href: midterm/slides/Midterm_slides_v3.qmd
+            text: "Improving Property Tax Assessments"
 format:
   html:
     theme: cosmo
