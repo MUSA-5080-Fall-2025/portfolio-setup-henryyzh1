@@ -1,0 +1,38 @@
+---
+title: "Week 6 Notes - Spatial Machine Learning & Advanced Regression"
+date: "2025-10-14"
+---
+
+## Key Concepts Learned
+- Reviewed the **limitations of simple linear models** that ignore spatial context.  
+- Introduced **categorical variables**, **interaction terms**, and **polynomial terms** to capture complex relationships.  
+- Learned how to convert data to **spatial features (sf)** and join with neighborhood boundaries.  
+- Built spatial features: **buffer aggregation**, **k-nearest neighbors (kNN)**, and **distance to amenities**.  
+- Added **fixed effects** to control for unobserved neighborhood characteristics.  
+- Practiced **cross-validation (CV)** for model comparison and predictive accuracy.  
+
+## Coding Techniques
+- Used `st_as_sf()` and `st_join()` to make spatial data and link to neighborhoods.  
+- Created dummy variables automatically in R with `as.factor()`.  
+- Implemented **interaction models** using `*` to test slope differences.  
+- Built polynomial regressions with `I(Age^2)` to capture non-linear effects.  
+- Generated spatial features (`st_buffer`, `st_distance`) and crime proximity variables.  
+- Applied `caret::train()` for **10-fold cross-validation** and RMSE evaluation.  
+
+## Questions & Challenges
+- How to interpret interaction coefficients when both intercept and slope change?  
+- When to prefer polynomial terms over log transformations?  
+- How to handle **sparse categorical data** during CV without overfitting?  
+- What is the best practice for balancing model complexity and interpretability?  
+
+## Connections to Policy
+- Spatial features and fixed effects improve **housing valuation fairness** across neighborhoods.  
+- Interaction and non-linear terms reveal **market segmentation** and inequality.  
+- Supports **policy design** by quantifying how location and neighborhood context shape value.  
+- Helps urban agencies develop **context-sensitive property tax assessments**.  
+
+## Reflection
+- Learned how adding spatial and interaction terms can greatly improve model accuracy.  
+- Realized that **location effects** often explain more variation than structure alone.
+- Fixed effects capture local characteristics that are otherwise hard to measure.  
+- Cross-validation provided a more reliable metric for comparing complex spatial models.

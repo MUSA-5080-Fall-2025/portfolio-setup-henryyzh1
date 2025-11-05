@@ -1,0 +1,35 @@
+---
+title: "Week 5 Notes - Model Diagnostics & Spatial Autocorrelation"
+date: "2025-10-07"
+---
+
+## Key Concepts Learned
+- Reviewed **assumptions of linear regression**: linearity, independence, homoscedasticity, and normality.  
+- Introduced **diagnostic tools** to assess model fit using residuals.  
+- Learned to identify **multicollinearity** with Variance Inflation Factor (VIF).  
+- Discussed **heteroskedasticity** and how it affects coefficient reliability.  
+- Explored **spatial autocorrelation** using Moran’s I to detect clustered residuals.  
+
+## Coding Techniques
+- Used `lm()` to fit baseline regression models.  
+- Checked heteroskedasticity with `bptest()` from the **lmtest** package.  
+- Calculated **VIF** with `car::vif()` to detect multicollinearity.  
+- Computed **Moran’s I** using the **spdep** package with spatial weights.  
+- Visualized residuals using `ggplot2` to spot non-random spatial patterns.  
+
+## Questions & Challenges
+- How to decide when spatial autocorrelation is strong enough to justify a spatial model?  
+- What threshold of VIF should trigger variable removal?  
+- When residuals show heteroskedasticity, is log transformation or robust SE better?  
+- How to distinguish random outliers from systematic spatial effects?  
+
+## Connections to Policy
+- Diagnostic analysis ensures **fair and consistent property value models**.  
+- Detecting spatial bias prevents over- or under-assessment in certain neighborhoods.  
+- Supports **data-driven urban policy** by verifying that spatial effects are accounted for.  
+
+## Reflection
+- Learned to see diagnostics as essential for **trustworthy regression models**.  
+- Realized that ignoring residual structure can lead to misleading results.  
+- Moran’s I provided a bridge between statistics and spatial thinking.  
+- Will apply these checks to refine the AVM model for Philadelphia housing data.  

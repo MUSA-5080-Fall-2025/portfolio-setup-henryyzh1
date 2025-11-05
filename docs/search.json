@@ -84,46 +84,130 @@
     "text": "Before submitting, make sure you’ve: - [ ] Customized _quarto.yml with your name - [ ] Updated index.qmd with your information - [ ] Completed Week 1 notes - [ ] Enabled GitHub Pages - [ ] Verified your website loads correctly - [ ] Submitted your URL to Canvas\n\nNeed help? Don’t struggle alone - reach out during office hours (mine + TAs) or in class!"
   },
   {
-    "objectID": "weekly-notes/week-04-notes.html",
-    "href": "weekly-notes/week-04-notes.html",
-    "title": "Week 4 Notes - Spatial Data & GIS Operations in R",
+    "objectID": "weekly-notes/week-07-notes.html",
+    "href": "weekly-notes/week-07-notes.html",
+    "title": "Week 7 Notes - Spatial Regression & Model Validation",
     "section": "",
-    "text": "Vector data (Points, lines, polygons)\nCRS (Coordinate Reference Systems)\nSpatial subsetting\nSaptial join\nGeometry operations"
+    "text": "Focused on cross-validation for spatial models.\n\nReviewed problems caused by sparse categories in CV splits.\n\nLearned how to group small neighborhoods to avoid errors.\n\nCompared models: structural, +spatial, and +fixed effects.\n\nDiscussed RMSE as a key metric for prediction accuracy."
   },
   {
-    "objectID": "weekly-notes/week-04-notes.html#key-concepts-learned",
-    "href": "weekly-notes/week-04-notes.html#key-concepts-learned",
-    "title": "Week 4 Notes - Spatial Data & GIS Operations in R",
+    "objectID": "weekly-notes/week-07-notes.html#key-concepts-learned",
+    "href": "weekly-notes/week-07-notes.html#key-concepts-learned",
+    "title": "Week 7 Notes - Spatial Regression & Model Validation",
     "section": "",
-    "text": "Vector data (Points, lines, polygons)\nCRS (Coordinate Reference Systems)\nSpatial subsetting\nSaptial join\nGeometry operations"
+    "text": "Focused on cross-validation for spatial models.\n\nReviewed problems caused by sparse categories in CV splits.\n\nLearned how to group small neighborhoods to avoid errors.\n\nCompared models: structural, +spatial, and +fixed effects.\n\nDiscussed RMSE as a key metric for prediction accuracy."
   },
   {
-    "objectID": "weekly-notes/week-04-notes.html#coding-techniques",
-    "href": "weekly-notes/week-04-notes.html#coding-techniques",
-    "title": "Week 4 Notes - Spatial Data & GIS Operations in R",
+    "objectID": "weekly-notes/week-07-notes.html#coding-techniques",
+    "href": "weekly-notes/week-07-notes.html#coding-techniques",
+    "title": "Week 7 Notes - Spatial Regression & Model Validation",
     "section": "Coding Techniques",
-    "text": "Coding Techniques\n\nsf package\n\nst_read(), st_transform(), st_crs(), st_geometry(), st_drop_geometry()\nst_buffer(), st_centroid(), st_distance(), st_area(.), st_union(), st_intersection()\nggplot() + geom_sf() + theme_void()\nst_filter(), st_intersects(), st_touches(), st_within(), st_contains(), st_overlaps(), st_disjoint()\nas.numeric()\nIf no .predicate specified, uses st_intersects"
+    "text": "Coding Techniques\n\nUsed caret::train() for 10-fold CV.\n\nCreated grouped neighborhood factors (name_cv) with mutate() and add_count().\n\nCompared RMSE across models to evaluate improvements.\n\nPracticed model selection workflow from simple → complex."
   },
   {
-    "objectID": "weekly-notes/week-04-notes.html#questions-challenges",
-    "href": "weekly-notes/week-04-notes.html#questions-challenges",
-    "title": "Week 4 Notes - Spatial Data & GIS Operations in R",
+    "objectID": "weekly-notes/week-07-notes.html#questions-challenges",
+    "href": "weekly-notes/week-07-notes.html#questions-challenges",
+    "title": "Week 7 Notes - Spatial Regression & Model Validation",
     "section": "Questions & Challenges",
-    "text": "Questions & Challenges\n\nPractice and try to remember the sf functions"
+    "text": "Questions & Challenges\n\nHow to choose the right number of folds for spatial CV?\n\nWhen to drop vs. group rare neighborhood categories?\n\nHow to interpret RMSE magnitude in housing price models?"
   },
   {
-    "objectID": "weekly-notes/week-04-notes.html#connections-to-policy",
-    "href": "weekly-notes/week-04-notes.html#connections-to-policy",
-    "title": "Week 4 Notes - Spatial Data & GIS Operations in R",
+    "objectID": "weekly-notes/week-07-notes.html#connections-to-policy",
+    "href": "weekly-notes/week-07-notes.html#connections-to-policy",
+    "title": "Week 7 Notes - Spatial Regression & Model Validation",
     "section": "Connections to Policy",
-    "text": "Connections to Policy\n\nTraining data may under-represent certain areas\nSpatial autocorrelation violates independence assumptions\nService delivery algorithms may reinforce geographic inequities"
+    "text": "Connections to Policy\n\nReliable validation ensures fairer property assessments.\n\nModel transparency supports public trust in tax estimation.\n\nHighlights the importance of data sufficiency in small-area analysis."
   },
   {
-    "objectID": "weekly-notes/week-04-notes.html#reflection",
-    "href": "weekly-notes/week-04-notes.html#reflection",
-    "title": "Week 4 Notes - Spatial Data & GIS Operations in R",
+    "objectID": "weekly-notes/week-07-notes.html#reflection",
+    "href": "weekly-notes/week-07-notes.html#reflection",
+    "title": "Week 7 Notes - Spatial Regression & Model Validation",
     "section": "Reflection",
-    "text": "Reflection\n\nFor CRS, measuring areas in latitude/longitude gives wrong answers\nOur mission: Understand spatial patterns to design fairer systems"
+    "text": "Reflection\n\nLearned that validation is as important as model fitting.\n\nGrouping sparse data prevents misleading model results.\n\nCross-validation helps test generalizability of spatial models."
+  },
+  {
+    "objectID": "weekly-notes/week-09-notes.html",
+    "href": "weekly-notes/week-09-notes.html",
+    "title": "Week 9 Notes - Critical Perspectives on Predictive Policing",
+    "section": "",
+    "text": "Introduced the idea of “dirty data” — biased, incomplete, or manipulated police data.\n\nLearned how predictive policing can reproduce systemic inequality.\n\nReviewed case studies (Chicago, Baltimore, NYPD) showing data manipulation and feedback loops.\n\nDiscussed the limits of technical fixes: bias mitigation ≠ justice.\n\nCompared Poisson vs. Negative Binomial models for crime counts.\n\nUnderstood that “accuracy” and “fairness” are not the same."
+  },
+  {
+    "objectID": "weekly-notes/week-09-notes.html#key-concepts-learned",
+    "href": "weekly-notes/week-09-notes.html#key-concepts-learned",
+    "title": "Week 9 Notes - Critical Perspectives on Predictive Policing",
+    "section": "",
+    "text": "Introduced the idea of “dirty data” — biased, incomplete, or manipulated police data.\n\nLearned how predictive policing can reproduce systemic inequality.\n\nReviewed case studies (Chicago, Baltimore, NYPD) showing data manipulation and feedback loops.\n\nDiscussed the limits of technical fixes: bias mitigation ≠ justice.\n\nCompared Poisson vs. Negative Binomial models for crime counts.\n\nUnderstood that “accuracy” and “fairness” are not the same."
+  },
+  {
+    "objectID": "weekly-notes/week-09-notes.html#coding-techniques",
+    "href": "weekly-notes/week-09-notes.html#coding-techniques",
+    "title": "Week 9 Notes - Critical Perspectives on Predictive Policing",
+    "section": "Coding Techniques",
+    "text": "Coding Techniques\n\nCreated fishnet grids (500m) and aggregated crime points to cells.\n\nCalculated Local Moran’s I for hotspots using spdep.\n\nBuilt Poisson and Negative Binomial models with glm() and glm.nb().\n\nImplemented spatial cross-validation (LOGO-CV) to avoid spatial leakage.\n\nCompared model results with Kernel Density Estimation (KDE) baseline."
+  },
+  {
+    "objectID": "weekly-notes/week-09-notes.html#questions-challenges",
+    "href": "weekly-notes/week-09-notes.html#questions-challenges",
+    "title": "Week 9 Notes - Critical Perspectives on Predictive Policing",
+    "section": "Questions & Challenges",
+    "text": "Questions & Challenges\n\nCan “cleaning” biased data ever make predictive policing fair?\n\nWhat counts as “neutral” or “objective” crime data?\n\nHow should accuracy be balanced against social harm?\n\nWhat does it mean to validate a model that may reinforce injustice?"
+  },
+  {
+    "objectID": "weekly-notes/week-09-notes.html#connections-to-policy",
+    "href": "weekly-notes/week-09-notes.html#connections-to-policy",
+    "title": "Week 9 Notes - Critical Perspectives on Predictive Policing",
+    "section": "Connections to Policy",
+    "text": "Connections to Policy\n\nHighlights how data-driven policing can amplify inequality.\n\nEmphasizes need for transparency and accountability in algorithmic decisions.\n\nSuggests shifting predictive models toward social service allocation, not surveillance.\n\nAligns with ethical urban data governance and community trust-building."
+  },
+  {
+    "objectID": "weekly-notes/week-09-notes.html#reflection",
+    "href": "weekly-notes/week-09-notes.html#reflection",
+    "title": "Week 9 Notes - Critical Perspectives on Predictive Policing",
+    "section": "Reflection",
+    "text": "Reflection\n\nRealized predictive models can be technically sound yet socially harmful.\n\nFound the “dirty data” concept essential for critical data literacy.\n\nThe lecture reframed prediction as a political and ethical act, not just technical.\n\nImportant takeaway: predictive tools must serve justice, not just efficiency."
+  },
+  {
+    "objectID": "weekly-notes/week-02-notes.html",
+    "href": "weekly-notes/week-02-notes.html",
+    "title": "Week 2 Notes - Algorithmic Decision Making & Census Data",
+    "section": "",
+    "text": "Running Lab 0\nAlgorithm in Governance\nGroup Challenge in Housing Assistance Allocation\nProxy, Blind spot, Harm/Guardrail\nCensus Data"
+  },
+  {
+    "objectID": "weekly-notes/week-02-notes.html#key-concepts-learned",
+    "href": "weekly-notes/week-02-notes.html#key-concepts-learned",
+    "title": "Week 2 Notes - Algorithmic Decision Making & Census Data",
+    "section": "",
+    "text": "Running Lab 0\nAlgorithm in Governance\nGroup Challenge in Housing Assistance Allocation\nProxy, Blind spot, Harm/Guardrail\nCensus Data"
+  },
+  {
+    "objectID": "weekly-notes/week-02-notes.html#coding-techniques",
+    "href": "weekly-notes/week-02-notes.html#coding-techniques",
+    "title": "Week 2 Notes - Algorithmic Decision Making & Census Data",
+    "section": "Coding Techniques",
+    "text": "Coding Techniques\n\nReviewing dplyr\nGet know with tidycensus"
+  },
+  {
+    "objectID": "weekly-notes/week-02-notes.html#questions-challenges",
+    "href": "weekly-notes/week-02-notes.html#questions-challenges",
+    "title": "Week 2 Notes - Algorithmic Decision Making & Census Data",
+    "section": "Questions & Challenges",
+    "text": "Questions & Challenges\n\nStill need more practice on the R functions"
+  },
+  {
+    "objectID": "weekly-notes/week-02-notes.html#connections-to-policy",
+    "href": "weekly-notes/week-02-notes.html#connections-to-policy",
+    "title": "Week 2 Notes - Algorithmic Decision Making & Census Data",
+    "section": "Connections to Policy",
+    "text": "Connections to Policy\n\nSmart governance definition\nUsing census data to support decision making"
+  },
+  {
+    "objectID": "weekly-notes/week-02-notes.html#reflection",
+    "href": "weekly-notes/week-02-notes.html#reflection",
+    "title": "Week 2 Notes - Algorithmic Decision Making & Census Data",
+    "section": "Reflection",
+    "text": "Reflection\n\nData analytic is subjective! Be careful not to exclude any group of people in the community."
   },
   {
     "objectID": "weekly-notes/week-03-notes.html",
@@ -525,46 +609,88 @@
     "text": "THANK YOU"
   },
   {
-    "objectID": "weekly-notes/week-02-notes.html",
-    "href": "weekly-notes/week-02-notes.html",
-    "title": "Week 2 Notes - Algorithmic Decision Making & Census Data",
+    "objectID": "weekly-notes/week-05-notes.html",
+    "href": "weekly-notes/week-05-notes.html",
+    "title": "Week 5 Notes - Model Diagnostics & Spatial Autocorrelation",
     "section": "",
-    "text": "Running Lab 0\nAlgorithm in Governance\nGroup Challenge in Housing Assistance Allocation\nProxy, Blind spot, Harm/Guardrail\nCensus Data"
+    "text": "Reviewed assumptions of linear regression: linearity, independence, homoscedasticity, and normality.\n\nIntroduced diagnostic tools to assess model fit using residuals.\n\nLearned to identify multicollinearity with Variance Inflation Factor (VIF).\n\nDiscussed heteroskedasticity and how it affects coefficient reliability.\n\nExplored spatial autocorrelation using Moran’s I to detect clustered residuals."
   },
   {
-    "objectID": "weekly-notes/week-02-notes.html#key-concepts-learned",
-    "href": "weekly-notes/week-02-notes.html#key-concepts-learned",
-    "title": "Week 2 Notes - Algorithmic Decision Making & Census Data",
+    "objectID": "weekly-notes/week-05-notes.html#key-concepts-learned",
+    "href": "weekly-notes/week-05-notes.html#key-concepts-learned",
+    "title": "Week 5 Notes - Model Diagnostics & Spatial Autocorrelation",
     "section": "",
-    "text": "Running Lab 0\nAlgorithm in Governance\nGroup Challenge in Housing Assistance Allocation\nProxy, Blind spot, Harm/Guardrail\nCensus Data"
+    "text": "Reviewed assumptions of linear regression: linearity, independence, homoscedasticity, and normality.\n\nIntroduced diagnostic tools to assess model fit using residuals.\n\nLearned to identify multicollinearity with Variance Inflation Factor (VIF).\n\nDiscussed heteroskedasticity and how it affects coefficient reliability.\n\nExplored spatial autocorrelation using Moran’s I to detect clustered residuals."
   },
   {
-    "objectID": "weekly-notes/week-02-notes.html#coding-techniques",
-    "href": "weekly-notes/week-02-notes.html#coding-techniques",
-    "title": "Week 2 Notes - Algorithmic Decision Making & Census Data",
+    "objectID": "weekly-notes/week-05-notes.html#coding-techniques",
+    "href": "weekly-notes/week-05-notes.html#coding-techniques",
+    "title": "Week 5 Notes - Model Diagnostics & Spatial Autocorrelation",
     "section": "Coding Techniques",
-    "text": "Coding Techniques\n\nReviewing dplyr\nGet know with tidycensus"
+    "text": "Coding Techniques\n\nUsed lm() to fit baseline regression models.\n\nChecked heteroskedasticity with bptest() from the lmtest package.\n\nCalculated VIF with car::vif() to detect multicollinearity.\n\nComputed Moran’s I using the spdep package with spatial weights.\n\nVisualized residuals using ggplot2 to spot non-random spatial patterns."
   },
   {
-    "objectID": "weekly-notes/week-02-notes.html#questions-challenges",
-    "href": "weekly-notes/week-02-notes.html#questions-challenges",
-    "title": "Week 2 Notes - Algorithmic Decision Making & Census Data",
+    "objectID": "weekly-notes/week-05-notes.html#questions-challenges",
+    "href": "weekly-notes/week-05-notes.html#questions-challenges",
+    "title": "Week 5 Notes - Model Diagnostics & Spatial Autocorrelation",
     "section": "Questions & Challenges",
-    "text": "Questions & Challenges\n\nStill need more practice on the R functions"
+    "text": "Questions & Challenges\n\nHow to decide when spatial autocorrelation is strong enough to justify a spatial model?\n\nWhat threshold of VIF should trigger variable removal?\n\nWhen residuals show heteroskedasticity, is log transformation or robust SE better?\n\nHow to distinguish random outliers from systematic spatial effects?"
   },
   {
-    "objectID": "weekly-notes/week-02-notes.html#connections-to-policy",
-    "href": "weekly-notes/week-02-notes.html#connections-to-policy",
-    "title": "Week 2 Notes - Algorithmic Decision Making & Census Data",
+    "objectID": "weekly-notes/week-05-notes.html#connections-to-policy",
+    "href": "weekly-notes/week-05-notes.html#connections-to-policy",
+    "title": "Week 5 Notes - Model Diagnostics & Spatial Autocorrelation",
     "section": "Connections to Policy",
-    "text": "Connections to Policy\n\nSmart governance definition\nUsing census data to support decision making"
+    "text": "Connections to Policy\n\nDiagnostic analysis ensures fair and consistent property value models.\n\nDetecting spatial bias prevents over- or under-assessment in certain neighborhoods.\n\nSupports data-driven urban policy by verifying that spatial effects are accounted for."
   },
   {
-    "objectID": "weekly-notes/week-02-notes.html#reflection",
-    "href": "weekly-notes/week-02-notes.html#reflection",
-    "title": "Week 2 Notes - Algorithmic Decision Making & Census Data",
+    "objectID": "weekly-notes/week-05-notes.html#reflection",
+    "href": "weekly-notes/week-05-notes.html#reflection",
+    "title": "Week 5 Notes - Model Diagnostics & Spatial Autocorrelation",
     "section": "Reflection",
-    "text": "Reflection\n\nData analytic is subjective! Be careful not to exclude any group of people in the community."
+    "text": "Reflection\n\nLearned to see diagnostics as essential for trustworthy regression models.\n\nRealized that ignoring residual structure can lead to misleading results.\n\nMoran’s I provided a bridge between statistics and spatial thinking.\n\nWill apply these checks to refine the AVM model for Philadelphia housing data."
+  },
+  {
+    "objectID": "weekly-notes/week-04-notes.html",
+    "href": "weekly-notes/week-04-notes.html",
+    "title": "Week 4 Notes - Spatial Data & GIS Operations in R",
+    "section": "",
+    "text": "Vector data (Points, lines, polygons)\nCRS (Coordinate Reference Systems)\nSpatial subsetting\nSaptial join\nGeometry operations"
+  },
+  {
+    "objectID": "weekly-notes/week-04-notes.html#key-concepts-learned",
+    "href": "weekly-notes/week-04-notes.html#key-concepts-learned",
+    "title": "Week 4 Notes - Spatial Data & GIS Operations in R",
+    "section": "",
+    "text": "Vector data (Points, lines, polygons)\nCRS (Coordinate Reference Systems)\nSpatial subsetting\nSaptial join\nGeometry operations"
+  },
+  {
+    "objectID": "weekly-notes/week-04-notes.html#coding-techniques",
+    "href": "weekly-notes/week-04-notes.html#coding-techniques",
+    "title": "Week 4 Notes - Spatial Data & GIS Operations in R",
+    "section": "Coding Techniques",
+    "text": "Coding Techniques\n\nsf package\n\nst_read(), st_transform(), st_crs(), st_geometry(), st_drop_geometry()\nst_buffer(), st_centroid(), st_distance(), st_area(.), st_union(), st_intersection()\nggplot() + geom_sf() + theme_void()\nst_filter(), st_intersects(), st_touches(), st_within(), st_contains(), st_overlaps(), st_disjoint()\nas.numeric()\nIf no .predicate specified, uses st_intersects"
+  },
+  {
+    "objectID": "weekly-notes/week-04-notes.html#questions-challenges",
+    "href": "weekly-notes/week-04-notes.html#questions-challenges",
+    "title": "Week 4 Notes - Spatial Data & GIS Operations in R",
+    "section": "Questions & Challenges",
+    "text": "Questions & Challenges\n\nPractice and try to remember the sf functions"
+  },
+  {
+    "objectID": "weekly-notes/week-04-notes.html#connections-to-policy",
+    "href": "weekly-notes/week-04-notes.html#connections-to-policy",
+    "title": "Week 4 Notes - Spatial Data & GIS Operations in R",
+    "section": "Connections to Policy",
+    "text": "Connections to Policy\n\nTraining data may under-represent certain areas\nSpatial autocorrelation violates independence assumptions\nService delivery algorithms may reinforce geographic inequities"
+  },
+  {
+    "objectID": "weekly-notes/week-04-notes.html#reflection",
+    "href": "weekly-notes/week-04-notes.html#reflection",
+    "title": "Week 4 Notes - Spatial Data & GIS Operations in R",
+    "section": "Reflection",
+    "text": "Reflection\n\nFor CRS, measuring areas in latitude/longitude gives wrong answers\nOur mission: Understand spatial patterns to design fairer systems"
   },
   {
     "objectID": "weekly-notes/week-01-notes.html",
@@ -607,5 +733,47 @@
     "title": "Week 1 Notes - Course Introduction",
     "section": "Reflection",
     "text": "Reflection\n\nLearn about Mets and Eagles\nThere are a lot to digest for a coding beginner! You are on the right track!"
+  },
+  {
+    "objectID": "weekly-notes/week-06-notes.html",
+    "href": "weekly-notes/week-06-notes.html",
+    "title": "Week 6 Notes - Spatial Machine Learning & Advanced Regression",
+    "section": "",
+    "text": "Reviewed the limitations of simple linear models that ignore spatial context.\n\nIntroduced categorical variables, interaction terms, and polynomial terms to capture complex relationships.\n\nLearned how to convert data to spatial features (sf) and join with neighborhood boundaries.\n\nBuilt spatial features: buffer aggregation, k-nearest neighbors (kNN), and distance to amenities.\n\nAdded fixed effects to control for unobserved neighborhood characteristics.\n\nPracticed cross-validation (CV) for model comparison and predictive accuracy."
+  },
+  {
+    "objectID": "weekly-notes/week-06-notes.html#key-concepts-learned",
+    "href": "weekly-notes/week-06-notes.html#key-concepts-learned",
+    "title": "Week 6 Notes - Spatial Machine Learning & Advanced Regression",
+    "section": "",
+    "text": "Reviewed the limitations of simple linear models that ignore spatial context.\n\nIntroduced categorical variables, interaction terms, and polynomial terms to capture complex relationships.\n\nLearned how to convert data to spatial features (sf) and join with neighborhood boundaries.\n\nBuilt spatial features: buffer aggregation, k-nearest neighbors (kNN), and distance to amenities.\n\nAdded fixed effects to control for unobserved neighborhood characteristics.\n\nPracticed cross-validation (CV) for model comparison and predictive accuracy."
+  },
+  {
+    "objectID": "weekly-notes/week-06-notes.html#coding-techniques",
+    "href": "weekly-notes/week-06-notes.html#coding-techniques",
+    "title": "Week 6 Notes - Spatial Machine Learning & Advanced Regression",
+    "section": "Coding Techniques",
+    "text": "Coding Techniques\n\nUsed st_as_sf() and st_join() to make spatial data and link to neighborhoods.\n\nCreated dummy variables automatically in R with as.factor().\n\nImplemented interaction models using * to test slope differences.\n\nBuilt polynomial regressions with I(Age^2) to capture non-linear effects.\n\nGenerated spatial features (st_buffer, st_distance) and crime proximity variables.\n\nApplied caret::train() for 10-fold cross-validation and RMSE evaluation."
+  },
+  {
+    "objectID": "weekly-notes/week-06-notes.html#questions-challenges",
+    "href": "weekly-notes/week-06-notes.html#questions-challenges",
+    "title": "Week 6 Notes - Spatial Machine Learning & Advanced Regression",
+    "section": "Questions & Challenges",
+    "text": "Questions & Challenges\n\nHow to interpret interaction coefficients when both intercept and slope change?\n\nWhen to prefer polynomial terms over log transformations?\n\nHow to handle sparse categorical data during CV without overfitting?\n\nWhat is the best practice for balancing model complexity and interpretability?"
+  },
+  {
+    "objectID": "weekly-notes/week-06-notes.html#connections-to-policy",
+    "href": "weekly-notes/week-06-notes.html#connections-to-policy",
+    "title": "Week 6 Notes - Spatial Machine Learning & Advanced Regression",
+    "section": "Connections to Policy",
+    "text": "Connections to Policy\n\nSpatial features and fixed effects improve housing valuation fairness across neighborhoods.\n\nInteraction and non-linear terms reveal market segmentation and inequality.\n\nSupports policy design by quantifying how location and neighborhood context shape value.\n\nHelps urban agencies develop context-sensitive property tax assessments."
+  },
+  {
+    "objectID": "weekly-notes/week-06-notes.html#reflection",
+    "href": "weekly-notes/week-06-notes.html#reflection",
+    "title": "Week 6 Notes - Spatial Machine Learning & Advanced Regression",
+    "section": "Reflection",
+    "text": "Reflection\n\nLearned how adding spatial and interaction terms can greatly improve model accuracy.\n\nRealized that location effects often explain more variation than structure alone.\nFixed effects capture local characteristics that are otherwise hard to measure.\n\nCross-validation provided a more reliable metric for comparing complex spatial models."
   }
 ]

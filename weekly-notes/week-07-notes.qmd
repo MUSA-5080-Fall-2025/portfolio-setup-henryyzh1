@@ -1,0 +1,32 @@
+---
+title: "Week 7 Notes - Spatial Regression & Model Validation"
+date: "2025-10-21"
+---
+
+## Key Concepts Learned
+- Focused on **cross-validation** for spatial models.  
+- Reviewed problems caused by **sparse categories** in CV splits.  
+- Learned how to **group small neighborhoods** to avoid errors.  
+- Compared models: structural, +spatial, and +fixed effects.  
+- Discussed **RMSE** as a key metric for prediction accuracy.  
+
+## Coding Techniques
+- Used `caret::train()` for **10-fold CV**.  
+- Created grouped neighborhood factors (`name_cv`) with `mutate()` and `add_count()`.  
+- Compared RMSE across models to evaluate improvements.  
+- Practiced model selection workflow from simple → complex.  
+
+## Questions & Challenges
+- How to choose the right number of folds for spatial CV?  
+- When to drop vs. group rare neighborhood categories?  
+- How to interpret RMSE magnitude in housing price models?  
+
+## Connections to Policy
+- Reliable validation ensures **fairer property assessments**.  
+- Model transparency supports **public trust** in tax estimation.  
+- Highlights the importance of **data sufficiency** in small-area analysis.  
+
+## Reflection
+- Learned that validation is as important as model fitting.  
+- Grouping sparse data prevents misleading model results.  
+- Cross-validation helps test generalizability of spatial models.  
