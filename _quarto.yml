@@ -26,6 +26,8 @@ website:
           text: Week 7
         - href: weekly-notes/week-09-notes.qmd
           text: Week 9
+        - href: weekly-notes/week-10-notes.qmd
+          text: Week 10
       - text: Labs
         menu:
         - href: Labs/lab_0/script/lab0_template.qmd
@@ -36,12 +38,14 @@ website:
           text: "Assignment 1: Census Data Exploration"
         - href: Labs/lab_2/script/Yang_Henry_Assignment2.qmd
           text: "Assignment 2: Spatial Analysis and Visualization"
+        - href: Labs/lab_4/script/Yang_Henry_Assignment4.qmd
+          text: "Assignment 4: Spatial Predictive Analysis"
       - text: Midterm
         menu: 
           - href: midterm/appendix/Yang_Henry_Midterm_appendix.qmd
             text: "Single-Family Home Price Prediction in Philadelphia"
           - href: midterm/slides/Yang_Henry_Midterm_slides.qmd
-            text: "Improving Property Tax Assessments"
+            text: "Slide Deck"
 format:
   html:
     theme: cosmo

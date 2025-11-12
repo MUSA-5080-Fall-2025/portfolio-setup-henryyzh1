@@ -1,0 +1,37 @@
+---
+title: "Week 10 Notes - Logistic Regression for Binary Outcomes"
+date: "2025-11-10"
+---
+
+## Key Concepts Learned
+- Introduced **logistic regression** for predicting binary outcomes (0/1).  
+- Explained why linear regression fails for probabilities (>1 or <0).  
+- Learned the **logit transformation** (log-odds) and **odds ratios** interpretation.  
+- Discussed model evaluation using **confusion matrices**, **ROC curves**, and **AUC**.  
+- Highlighted **threshold selection** and trade-offs between sensitivity and specificity.  
+- Connected model performance with **ethical and equity concerns** in prediction.  
+
+## Coding Techniques
+- Used `glm(..., family = "binomial")` to fit logistic regression models.  
+- Converted coefficients to **odds ratios** with `exp(coef(model))`.  
+- Calculated metrics using `confusionMatrix()` from **caret**.  
+- Created **ROC curves** with `pROC::roc()` and visualized AUC values.  
+- Tested multiple probability thresholds to evaluate trade-offs.  
+
+## Questions & Challenges
+- How to set the “right” threshold when costs of errors differ?  
+- What happens when class imbalance skews precision and recall?  
+- How to interpret log-odds coefficients meaningfully for policy?  
+- Can a model be “accurate” yet still inequitable across groups?  
+
+## Connections to Policy
+- Logistic regression supports **risk-based decision-making** in justice, health, and housing.  
+- Helps policymakers weigh trade-offs between **false positives and false negatives**.  
+- Raises awareness of **algorithmic fairness**—equal accuracy doesn’t mean equal treatment.  
+- Informs **transparent and accountable** threshold setting for predictive systems.  
+
+## Reflection
+- Learned to see logistic regression as a **probabilistic decision tool**, not just a model.  
+- Understood the power and risk of threshold choices in real-world applications.  
+- ROC and AUC visualizations clarified the balance between sensitivity and precision.  
+- Important takeaway: **Statistical accuracy must be paired with ethical awareness**.  
