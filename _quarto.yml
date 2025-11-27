@@ -28,6 +28,8 @@ website:
           text: Week 9
         - href: weekly-notes/week-10-notes.qmd
           text: Week 10
+        - href: weekly-notes/week-11-notes.qmd
+          text: Week 11
       - text: Labs
         menu:
         - href: Labs/lab_0/script/lab0_template.qmd
@@ -40,6 +42,8 @@ website:
           text: "Assignment 2: Spatial Analysis and Visualization"
         - href: Labs/lab_4/script/Yang_Henry_Assignment4.qmd
           text: "Assignment 4: Spatial Predictive Analysis"
+        - href: Labs/lab_5/script/Cen_Yang_Assignment5.Rmd
+          text: "Assignment 5: Space-Time Prediction of Bike Share Demand"
       - text: Midterm
         menu: 
           - href: midterm/appendix/Yang_Henry_Midterm_appendix.qmd

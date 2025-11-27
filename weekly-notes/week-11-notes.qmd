@@ -1,0 +1,38 @@
+---
+title: "Week 11 Notes - Space-Time Prediction & Panel Data"
+date: "2025-11-17"
+---
+
+## Key Concepts Learned
+- Introduced **panel data** (station × hour) and why it’s different from cross-sectional data.  
+- Learned **temporal patterns** in bike demand: rush hours, weekend effects, weather.  
+- Understood **time binning** to structure trip data.  
+- Added **temporal lag features** to capture persistence.  
+- Learned the idea of **temporal validation** — train on past, test on future.  
+- Compared model layers: time/weather → +lags → +spatial → +station FE → +holidays.  
+
+## Coding Techniques
+- Used `floor_date()` to bin timestamps into hourly intervals.  
+- Built a **complete station-hour panel** with `expand.grid()` + `left_join()`.  
+- Generated lag variables with `group_by()` + `lag()`.  
+- Added station demographics (spatial features) to each row.  
+- Implemented **temporal train/test split** using weeks of year.  
+- Evaluated models with **MAE** and compared across Model 1–5.  
+
+## Questions & Challenges
+- How many lag features are useful before the model becomes too complex?  
+- Which matters more for prediction: temporal lags or spatial factors?  
+- What is a “good enough” MAE for operations?  
+- How to detect equity issues in prediction errors across stations?  
+
+## Connections to Policy
+- Better demand prediction improves **bike rebalancing** and service reliability.  
+- Temporal lags help anticipate morning/evening shortages proactively.  
+- Spatial error patterns highlight where infrastructure or service is weaker.  
+- Raises equity questions: are low-income or peripheral stations predicted worse?  
+
+## Reflection
+- Useful to see how space + time interact in real operational tasks.  
+- Temporal validation makes sense — mirrors real forecasting workflows.  
+- Biggest improvement came from **adding lags**, confirming short-term persistence.  
+- Important takeaway: prediction quality isn’t just about accuracy, but who benefits from it.  
