@@ -50,6 +50,13 @@ website:
             text: "Single-Family Home Price Prediction in Philadelphia"
           - href: midterm/slides/Yang_Henry_Midterm_slides.qmd
             text: "Slide Deck"
+      - text: Final Project
+        menu: 
+          - href: final/appendix/final_2025.qmd
+            text: "SEPTA Bus Ridership Prediction in Philadelphia"
+          - href: final/slides/final_slides_2025.qmd
+            text: "Slide Deck"
+
 format:
   html:
     theme: cosmo
